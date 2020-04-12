@@ -10,6 +10,7 @@ def main():
     query_parser = RequestQueryStringParser(weather_api_query_string)
 
     if not USE_API_ENDPOINT:
+        query_parser.parsed_query_dict['format'] = 'json'
         api_forecast = static_api_forecast.StaticAPIForecast(query_parser)
     else:
         api_forecast = weather_api_forecast.WeatherAPIForecast(query_parser)
