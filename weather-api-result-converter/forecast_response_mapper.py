@@ -46,7 +46,7 @@ class ForecastResponseMapper:
     def __init__(self, forecast_response_dictionary):
         self.response_dictionary = forecast_response_dictionary
 
-    def to_world_weather_online_format(self):
+    def to_output_format(self):
         source_dict = self.response_dictionary
         current = source_dict['current']
         last_updated = datetime.datetime.fromtimestamp(current['last_updated_epoch'])

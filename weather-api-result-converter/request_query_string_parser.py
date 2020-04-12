@@ -17,14 +17,14 @@ class RequestQueryStringParser:
     def retrieve_search_query(self):
         return self.parsed_query_dict['q']
 
-    def retrieve_file_format(self):
-        if 'format' in self.parsed_query_dict:
-            return self.parsed_query_dict['format']
+    def retrieve_file_format(self, default_value='xml'):
+        return self.retrieve_value_or_default('format', default_value)
 
-        return 'xml'
+    def retrieve_requested_days(self, default_value=5):
+        return self.retrieve_value_or_default('num_of_days', default_value)
 
-    def retrieve_requested_days(self):
-        if 'num_of_days' in self.parsed_query_dict:
-            return self.parsed_query_dict['num_of_days']
+    def retrieve_value_or_default(self, value_name, default_value):
+        if value_name in self.parsed_query_dict:
+            return self.parsed_query_dict[value_name]
 
-        return 5
+        return default_value
