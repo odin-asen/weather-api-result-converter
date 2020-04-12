@@ -2,11 +2,11 @@ import cgi_parameters
 import static_api
 import weather_api
 
-USE_API_ENDPOINT = True
+USE_API_ENDPOINT = False
 
 
 def main():
-    if USE_API_ENDPOINT:
+    if not USE_API_ENDPOINT:
         response_string = static_api.fetch_and_map_response_as_string()
     else:
         weather_api_path = cgi_parameters.get_cgi_url_path()
