@@ -1,12 +1,10 @@
 import datetime
 
+from forecast_mapper.base_forecast_mapper import BaseForecastMapper, round_to_str
+
 
 def weather_api_to_world_weather_code(weather_api_code: int):
     return str(weather_api_code - 887)
-
-
-def round_to_str(value: float):
-    return str(round(value))
 
 
 def forecast_day_to_weather_element(forecast_day: dict):
@@ -42,12 +40,10 @@ def forecast_day_to_weather_element(forecast_day: dict):
     return weather_element
 
 
-class ForecastResponseMapper:
-    def __init__(self, forecast_response_dictionary):
-        self.response_dictionary = forecast_response_dictionary
+class ForecastResponseMapper(BaseForecastMapper):
 
-    def to_output_format(self):
-        source_dict = self.response_dictionary
+    def to_output_dictionary(self):
+        source_dict = self.forecast_input_dictionary
         current = source_dict['current']
         last_updated = datetime.datetime.fromtimestamp(current['last_updated_epoch'])
         mapped = {
@@ -96,7 +92,7 @@ class ForecastResponseMapper:
         return mapped
 
     def to_weather_elements(self):
-        source_dict = self.response_dictionary
+        source_dict = self.forecast_input_dictionary
         weather_elements = []
         for forecast_day in source_dict['forecast']['forecastday']:
             weather_elements.append(forecast_day_to_weather_element(forecast_day))

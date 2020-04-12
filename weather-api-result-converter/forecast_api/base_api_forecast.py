@@ -1,7 +1,7 @@
 import json
 from abc import abstractmethod
 
-from forecast_response_mapper import ForecastResponseMapper
+from forecast_mapper.base_forecast_mapper import BaseForecastMapper
 from request_query_string_parser import RequestQueryStringParser
 
 
@@ -9,11 +9,11 @@ class BaseAPIForecast:
     def __init__(self, query_string_parser: RequestQueryStringParser):
         self.query_string_parser = query_string_parser
 
-    def fetch_and_map_response_as_string(self):
-        forecast_json = self.retrieve_json_from_endpoint()
+    def fetch_and_map_response_as_string(self) -> str:
+        forecast_json = self.retrieve_json_string_from_endpoint()
 
-        mapper = ForecastResponseMapper(forecast_json)
-        mapped_dictionary = mapper.to_output_format()
+        mapper = self.create_mapper(forecast_json)
+        mapped_dictionary = mapper.to_output_dictionary()
 
         file_format = self.query_string_parser.retrieve_file_format()
         if file_format == 'json':
@@ -25,9 +25,13 @@ class BaseAPIForecast:
         raise NotImplementedError('Unknown output format {format} not implemented'
                                   .format(format=file_format))
 
-    def make_content_type(self):
+    def make_content_type(self) -> str:
         return "Content-type: application/" + self.query_string_parser.retrieve_file_format()
 
     @abstractmethod
-    def retrieve_json_from_endpoint(self):
+    def retrieve_json_string_from_endpoint(self) -> str:
+        pass
+
+    @abstractmethod
+    def create_mapper(self, json_string: str) -> BaseForecastMapper:
         pass
