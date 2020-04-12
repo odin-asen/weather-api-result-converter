@@ -40,7 +40,7 @@ def forecast_day_to_weather_element(forecast_day: dict):
     return weather_element
 
 
-class ForecastResponseMapper(BaseForecastMapper):
+class WeatherAPIForecastMapper(BaseForecastMapper):
 
     def to_output_dictionary(self):
         source_dict = self.forecast_input_dictionary

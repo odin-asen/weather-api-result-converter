@@ -1,7 +1,8 @@
 import requests
 
 from forecast_api.base_api_forecast import BaseAPIForecast
-from forecast_response_mapper import ForecastResponseMapper
+from forecast_mapper.base_forecast_mapper import BaseForecastMapper
+from forecast_mapper.weather_api_forecast_mapper import WeatherAPIForecastMapper
 from request_query_string_parser import RequestQueryStringParser
 
 
@@ -29,5 +30,6 @@ class WeatherAPIForecast(BaseAPIForecast):
                 days=self.query_string_parser.retrieve_requested_days()
             )
 
-    def create_mapper(self, json_string):
-        return ForecastResponseMapper(json_string)
+    # noinspection Pylint
+    def create_mapper(self, json_string) -> BaseForecastMapper:
+        return WeatherAPIForecastMapper(json_string)
