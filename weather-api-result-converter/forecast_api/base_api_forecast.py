@@ -25,6 +25,9 @@ class BaseAPIForecast:
         raise NotImplementedError('Unknown output format {format} not implemented'
                                   .format(format=file_format))
 
+    def make_content_type(self):
+        return "Content-type: application/" + self.query_string_parser.retrieve_file_format()
+
     @abstractmethod
     def retrieve_json_from_endpoint(self):
         pass

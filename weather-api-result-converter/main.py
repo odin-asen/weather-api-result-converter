@@ -6,7 +6,6 @@ USE_API_ENDPOINT = False
 
 
 def main():
-    weather_api_path = cgi_parameters.get_cgi_url_path()
     weather_api_query_string = cgi_parameters.get_cgi_url_query_string()
     query_parser = RequestQueryStringParser(weather_api_query_string)
 
@@ -15,6 +14,7 @@ def main():
     else:
         api_forecast = weather_api_forecast.WeatherAPIForecast(query_parser)
 
+    print(api_forecast.make_content_type())
     print(api_forecast.fetch_and_map_response_as_string())
 
 
