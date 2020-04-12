@@ -1,0 +1,199 @@
+<root>
+  <location>
+    <name>Singen</name>
+    <region>Baden-Wurttemberg</region>
+    <country>Germany</country>
+    <lat>47.77</lat>
+    <lon>8.83</lon>
+    <tz_id>Europe/Berlin</tz_id>
+    <localtime_epoch>1586301891</localtime_epoch>
+    <localtime>2020-04-08 1:24</localtime>
+  </location>
+  <current>
+    <last_updated_epoch>1586301322</last_updated_epoch>
+    <last_updated>2020-04-08 01:15</last_updated>
+    <temp_c>9</temp_c>
+    <temp_f>48.2</temp_f>
+    <is_day>0</is_day>
+    <condition>
+      <text>Clear</text>
+      <icon>//cdn.weatherapi.com/weather/64x64/night/113.png</icon>
+      <code>1000</code>
+    </condition>
+    <wind_mph>3.8</wind_mph>
+    <wind_kph>6.1</wind_kph>
+    <wind_degree>110</wind_degree>
+    <wind_dir>ESE</wind_dir>
+    <pressure_mb>1026</pressure_mb>
+    <pressure_in>30.8</pressure_in>
+    <precip_mm>0</precip_mm>
+    <precip_in>0</precip_in>
+    <humidity>62</humidity>
+    <cloud>0</cloud>
+    <feelslike_c>8.3</feelslike_c>
+    <feelslike_f>46.9</feelslike_f>
+    <vis_km>10</vis_km>
+    <vis_miles>6</vis_miles>
+    <uv>0</uv>
+    <gust_mph>6.9</gust_mph>
+    <gust_kph>11.2</gust_kph>
+  </current>
+  <forecast>
+    <forecastday>
+      <date>2020-04-08</date>
+      <date_epoch>1586304000</date_epoch>
+      <day>
+        <maxtemp_c>21.2</maxtemp_c>
+        <maxtemp_f>70.2</maxtemp_f>
+        <mintemp_c>6.7</mintemp_c>
+        <mintemp_f>44.1</mintemp_f>
+        <avgtemp_c>14</avgtemp_c>
+        <avgtemp_f>57.2</avgtemp_f>
+        <maxwind_mph>3.4</maxwind_mph>
+        <maxwind_kph>5.4</maxwind_kph>
+        <totalprecip_mm>0</totalprecip_mm>
+        <totalprecip_in>0</totalprecip_in>
+        <avgvis_km>10</avgvis_km>
+        <avgvis_miles>6</avgvis_miles>
+        <avghumidity>71</avghumidity>
+        <condition>
+          <text>Partly cloudy</text>
+          <icon>//cdn.weatherapi.com/weather/64x64/day/116.png</icon>
+          <code>1003</code>
+        </condition>
+        <uv>4.8</uv>
+      </day>
+      <astro>
+        <sunrise>06:49 AM</sunrise>
+        <sunset>08:05 PM</sunset>
+        <moonrise>08:40 PM</moonrise>
+        <moonset>07:23 AM</moonset>
+      </astro>
+    </forecastday>
+    <forecastday>
+      <date>2020-04-09</date>
+      <date_epoch>1586390400</date_epoch>
+      <day>
+        <maxtemp_c>19.9</maxtemp_c>
+        <maxtemp_f>67.8</maxtemp_f>
+        <mintemp_c>6</mintemp_c>
+        <mintemp_f>42.8</mintemp_f>
+        <avgtemp_c>13.3</avgtemp_c>
+        <avgtemp_f>56</avgtemp_f>
+        <maxwind_mph>7.8</maxwind_mph>
+        <maxwind_kph>12.6</maxwind_kph>
+        <totalprecip_mm>0</totalprecip_mm>
+        <totalprecip_in>0</totalprecip_in>
+        <avgvis_km>10</avgvis_km>
+        <avgvis_miles>6</avgvis_miles>
+        <avghumidity>70</avghumidity>
+        <condition>
+          <text>Partly cloudy</text>
+          <icon>//cdn.weatherapi.com/weather/64x64/day/116.png</icon>
+          <code>1003</code>
+        </condition>
+        <uv>5</uv>
+      </day>
+      <astro>
+        <sunrise>06:47 AM</sunrise>
+        <sunset>08:06 PM</sunset>
+        <moonrise>10:03 PM</moonrise>
+        <moonset>07:50 AM</moonset>
+      </astro>
+    </forecastday>
+    <forecastday>
+      <date>2020-04-10</date>
+      <date_epoch>1586476800</date_epoch>
+      <day>
+        <maxtemp_c>19.5</maxtemp_c>
+        <maxtemp_f>67.1</maxtemp_f>
+        <mintemp_c>6</mintemp_c>
+        <mintemp_f>42.8</mintemp_f>
+        <avgtemp_c>13.5</avgtemp_c>
+        <avgtemp_f>56.3</avgtemp_f>
+        <maxwind_mph>6.7</maxwind_mph>
+        <maxwind_kph>10.8</maxwind_kph>
+        <totalprecip_mm>0</totalprecip_mm>
+        <totalprecip_in>0</totalprecip_in>
+        <avgvis_km>10</avgvis_km>
+        <avgvis_miles>6</avgvis_miles>
+        <avghumidity>69</avghumidity>
+        <condition>
+          <text>Partly cloudy</text>
+          <icon>//cdn.weatherapi.com/weather/64x64/day/116.png</icon>
+          <code>1003</code>
+        </condition>
+        <uv>5.9</uv>
+      </day>
+      <astro>
+        <sunrise>06:45 AM</sunrise>
+        <sunset>08:08 PM</sunset>
+        <moonrise>11:25 PM</moonrise>
+        <moonset>08:18 AM</moonset>
+      </astro>
+    </forecastday>
+    <forecastday>
+      <date>2020-04-11</date>
+      <date_epoch>1586563200</date_epoch>
+      <day>
+        <maxtemp_c>22</maxtemp_c>
+        <maxtemp_f>71.6</maxtemp_f>
+        <mintemp_c>6.7</mintemp_c>
+        <mintemp_f>44.1</mintemp_f>
+        <avgtemp_c>14.5</avgtemp_c>
+        <avgtemp_f>58.1</avgtemp_f>
+        <maxwind_mph>3.1</maxwind_mph>
+        <maxwind_kph>5</maxwind_kph>
+        <totalprecip_mm>0.1</totalprecip_mm>
+        <totalprecip_in>0</totalprecip_in>
+        <avgvis_km>9</avgvis_km>
+        <avgvis_miles>5</avgvis_miles>
+        <avghumidity>73</avghumidity>
+        <condition>
+          <text>Partly cloudy</text>
+          <icon>//cdn.weatherapi.com/weather/64x64/day/116.png</icon>
+          <code>1003</code>
+        </condition>
+        <uv>5.5</uv>
+      </day>
+      <astro>
+        <sunrise>06:43 AM</sunrise>
+        <sunset>08:09 PM</sunset>
+        <moonrise>No moonrise</moonrise>
+        <moonset>08:52 AM</moonset>
+      </astro>
+    </forecastday>
+    <forecastday>
+      <date>2020-04-12</date>
+      <date_epoch>1586649600</date_epoch>
+      <day>
+        <maxtemp_c>20</maxtemp_c>
+        <maxtemp_f>68</maxtemp_f>
+        <mintemp_c>6.6</mintemp_c>
+        <mintemp_f>43.9</mintemp_f>
+        <avgtemp_c>13.4</avgtemp_c>
+        <avgtemp_f>56.2</avgtemp_f>
+        <maxwind_mph>7.4</maxwind_mph>
+        <maxwind_kph>11.9</maxwind_kph>
+        <totalprecip_mm>0.1</totalprecip_mm>
+        <totalprecip_in>0</totalprecip_in>
+        <avgvis_km>9</avgvis_km>
+        <avgvis_miles>5</avgvis_miles>
+        <avghumidity>69</avghumidity>
+        <condition>
+          <text>Partly cloudy</text>
+          <icon>//cdn.weatherapi.com/weather/64x64/day/116.png</icon>
+          <code>1003</code>
+        </condition>
+        <uv>4</uv>
+      </day>
+      <astro>
+        <sunrise>06:41 AM</sunrise>
+        <sunset>08:11 PM</sunset>
+        <moonrise>12:42 AM</moonrise>
+        <moonset>09:33 AM</moonset>
+      </astro>
+    </forecastday>
+  </forecast>
+  <alert/>
+</root>
