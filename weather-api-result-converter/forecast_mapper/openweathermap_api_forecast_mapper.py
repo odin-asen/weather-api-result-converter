@@ -63,9 +63,9 @@ def forecast_day_to_weather_element(forecast_day: dict):
 
     # Could not test this part, because no premium API Key available for weatherapi.com
     hourly_elements = []
-    if 'hour' in forecast_day:
-        for forecast_day_hour in forecast_day['hour']:
-            hourly_elements.append(forecast_day_hour_to_hourly_element(forecast_day_hour))
+#    if 'hour' in forecast_day:
+#        for forecast_day_hour in forecast_day['hour']:
+#            hourly_elements.append(forecast_day_hour_to_hourly_element(forecast_day_hour))
 
     return {
         'date': forecast_day['date'],
@@ -98,14 +98,14 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
 
     def __init__(self, json_string):
         super().__init__(json_string)
-        self.corresponding_code_key = 'openwaeathermap'
+        self.corresponding_code_key = 'openweathermap'
 
     def to_output_dictionary(self):
         source_dict = self.forecast_input_dictionary
         current = source_dict['list'][0]
         current_timestamp = datetime.datetime.now().timestamp()
 
-        current_corresponding_code = current['weather']['id']
+        current_corresponding_code = current['weather'][0]['id']
         return {
             'data': {
                 'current_condition': [
@@ -149,13 +149,14 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                         'pressureInches': round_to_str(
                             h_pa_to_inches(current['main']['grnd_level'])),
                         'cloudcover': round_to_str(current['clouds']['all']),
-                        'FeelsLikeC': round_to_str(current['main']['feelslike']),
+                        'FeelsLikeC': round_to_str(current['main']['feels_like']),
                         'FeelsLikeF': round_to_str(
-                            celsius_to_fahrenheit(current['main']['feelslike'])),
+                            celsius_to_fahrenheit(current['main']['feels_like'])),
                         # not available
                         'uvIndex': 0
                     }
                 ],
+                # TODO implement weather elements
                 'weather': self.to_weather_elements(),
                 'ClimateAverages': [
                     # does not exist on Weather-API
@@ -163,7 +164,6 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
             }
         }
 
-# Hier weitermachen
     def to_weather_elements(self):
         source_dict = self.forecast_input_dictionary
         weather_elements = []

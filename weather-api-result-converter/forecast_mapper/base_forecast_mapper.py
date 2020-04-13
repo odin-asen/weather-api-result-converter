@@ -36,7 +36,7 @@ class BaseForecastMapper:
             if self.corresponding_code_key in mapping['corresponding_codes']:
                 codes_list = mapping['corresponding_codes'][self.corresponding_code_key]
                 if corresponding_code in codes_list:
-                    return mapping['code']
+                    return mapping
 
         error_message = \
             'mapping not configured for key "{code_key}" and corresponding code "{code}"'.format(
