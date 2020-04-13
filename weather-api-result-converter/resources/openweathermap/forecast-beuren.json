@@ -4,53 +4,17 @@
   "cnt": 40,
   "list": [
     {
-      "dt": 1586800800,
-      "main": {
-        "temp": 285,
-        "feels_like": 280.82,
-        "temp_min": 283.97,
-        "temp_max": 285,
-        "pressure": 1015,
-        "sea_level": 1015,
-        "grnd_level": 963,
-        "humidity": 70,
-        "temp_kf": 1.03
-      },
-      "weather": [
-        {
-          "id": 500,
-          "main": "Rain",
-          "description": "light rain",
-          "icon": "10d"
-        }
-      ],
-      "clouds": {
-        "all": 52
-      },
-      "wind": {
-        "speed": 4.83,
-        "deg": 31
-      },
-      "rain": {
-        "3h": 0.71
-      },
-      "sys": {
-        "pod": "d"
-      },
-      "dt_txt": "2020-04-13 18:00:00"
-    },
-    {
       "dt": 1586811600,
       "main": {
-        "temp": 280.64,
-        "feels_like": 275.58,
-        "temp_min": 279.87,
-        "temp_max": 280.64,
+        "temp": 6.87,
+        "feels_like": 1.71,
+        "temp_min": 6.72,
+        "temp_max": 6.87,
         "pressure": 1019,
         "sea_level": 1019,
         "grnd_level": 966,
         "humidity": 66,
-        "temp_kf": 0.77
+        "temp_kf": 0.15
       },
       "weather": [
         {
@@ -78,15 +42,15 @@
     {
       "dt": 1586822400,
       "main": {
-        "temp": 276.61,
-        "feels_like": 272.13,
-        "temp_min": 276.09,
-        "temp_max": 276.61,
+        "temp": 3.05,
+        "feels_like": -1.48,
+        "temp_min": 2.94,
+        "temp_max": 3.05,
         "pressure": 1022,
         "sea_level": 1022,
         "grnd_level": 968,
         "humidity": 66,
-        "temp_kf": 0.52
+        "temp_kf": 0.11
       },
       "weather": [
         {
@@ -111,15 +75,15 @@
     {
       "dt": 1586833200,
       "main": {
-        "temp": 273.19,
-        "feels_like": 269.41,
-        "temp_min": 272.93,
-        "temp_max": 273.19,
+        "temp": -0.14,
+        "feels_like": -3.94,
+        "temp_min": -0.22,
+        "temp_max": -0.14,
         "pressure": 1023,
         "sea_level": 1023,
         "grnd_level": 968,
         "humidity": 79,
-        "temp_kf": 0.26
+        "temp_kf": 0.08
       },
       "weather": [
         {
@@ -144,15 +108,15 @@
     {
       "dt": 1586844000,
       "main": {
-        "temp": 273.82,
-        "feels_like": 268.68,
-        "temp_min": 273.82,
-        "temp_max": 273.82,
+        "temp": 0.71,
+        "feels_like": -4.42,
+        "temp_min": 0.67,
+        "temp_max": 0.71,
         "pressure": 1024,
         "sea_level": 1024,
         "grnd_level": 970,
         "humidity": 73,
-        "temp_kf": 0
+        "temp_kf": 0.04
       },
       "weather": [
         {
@@ -177,10 +141,10 @@
     {
       "dt": 1586854800,
       "main": {
-        "temp": 279.11,
-        "feels_like": 274.18,
-        "temp_min": 279.11,
-        "temp_max": 279.11,
+        "temp": 5.96,
+        "feels_like": 1.03,
+        "temp_min": 5.96,
+        "temp_max": 5.96,
         "pressure": 1024,
         "sea_level": 1024,
         "grnd_level": 971,
@@ -210,10 +174,10 @@
     {
       "dt": 1586865600,
       "main": {
-        "temp": 282.89,
-        "feels_like": 277.68,
-        "temp_min": 282.89,
-        "temp_max": 282.89,
+        "temp": 9.74,
+        "feels_like": 4.53,
+        "temp_min": 9.74,
+        "temp_max": 9.74,
         "pressure": 1023,
         "sea_level": 1023,
         "grnd_level": 970,
@@ -243,10 +207,10 @@
     {
       "dt": 1586876400,
       "main": {
-        "temp": 283.21,
-        "feels_like": 278.03,
-        "temp_min": 283.21,
-        "temp_max": 283.21,
+        "temp": 10.06,
+        "feels_like": 4.88,
+        "temp_min": 10.06,
+        "temp_max": 10.06,
         "pressure": 1021,
         "sea_level": 1021,
         "grnd_level": 969,
@@ -276,10 +240,10 @@
     {
       "dt": 1586887200,
       "main": {
-        "temp": 278.21,
-        "feels_like": 273.46,
-        "temp_min": 278.21,
-        "temp_max": 278.21,
+        "temp": 5.06,
+        "feels_like": 0.31,
+        "temp_min": 5.06,
+        "temp_max": 5.06,
         "pressure": 1023,
         "sea_level": 1023,
         "grnd_level": 970,
@@ -309,10 +273,10 @@
     {
       "dt": 1586898000,
       "main": {
-        "temp": 274.59,
-        "feels_like": 269.96,
-        "temp_min": 274.59,
-        "temp_max": 274.59,
+        "temp": 1.44,
+        "feels_like": -3.19,
+        "temp_min": 1.44,
+        "temp_max": 1.44,
         "pressure": 1025,
         "sea_level": 1025,
         "grnd_level": 971,
@@ -342,10 +306,10 @@
     {
       "dt": 1586908800,
       "main": {
-        "temp": 273.06,
-        "feels_like": 268.84,
-        "temp_min": 273.06,
-        "temp_max": 273.06,
+        "temp": -0.09,
+        "feels_like": -4.31,
+        "temp_min": -0.09,
+        "temp_max": -0.09,
         "pressure": 1024,
         "sea_level": 1024,
         "grnd_level": 970,
@@ -375,10 +339,10 @@
     {
       "dt": 1586919600,
       "main": {
-        "temp": 272.58,
-        "feels_like": 268.61,
-        "temp_min": 272.58,
-        "temp_max": 272.58,
+        "temp": -0.57,
+        "feels_like": -4.54,
+        "temp_min": -0.57,
+        "temp_max": -0.57,
         "pressure": 1024,
         "sea_level": 1024,
         "grnd_level": 970,
@@ -408,10 +372,10 @@
     {
       "dt": 1586930400,
       "main": {
-        "temp": 275,
-        "feels_like": 270.99,
-        "temp_min": 275,
-        "temp_max": 275,
+        "temp": 1.85,
+        "feels_like": -2.16,
+        "temp_min": 1.85,
+        "temp_max": 1.85,
         "pressure": 1024,
         "sea_level": 1024,
         "grnd_level": 970,
@@ -441,10 +405,10 @@
     {
       "dt": 1586941200,
       "main": {
-        "temp": 282.92,
-        "feels_like": 278.69,
-        "temp_min": 282.92,
-        "temp_max": 282.92,
+        "temp": 9.77,
+        "feels_like": 5.54,
+        "temp_min": 9.77,
+        "temp_max": 9.77,
         "pressure": 1023,
         "sea_level": 1023,
         "grnd_level": 970,
@@ -474,10 +438,10 @@
     {
       "dt": 1586952000,
       "main": {
-        "temp": 288.95,
-        "feels_like": 285.09,
-        "temp_min": 288.95,
-        "temp_max": 288.95,
+        "temp": 15.8,
+        "feels_like": 11.94,
+        "temp_min": 15.8,
+        "temp_max": 15.8,
         "pressure": 1021,
         "sea_level": 1021,
         "grnd_level": 970,
@@ -507,10 +471,10 @@
     {
       "dt": 1586962800,
       "main": {
-        "temp": 289.47,
-        "feels_like": 285.77,
-        "temp_min": 289.47,
-        "temp_max": 289.47,
+        "temp": 16.32,
+        "feels_like": 12.62,
+        "temp_min": 16.32,
+        "temp_max": 16.32,
         "pressure": 1020,
         "sea_level": 1020,
         "grnd_level": 969,
@@ -540,10 +504,10 @@
     {
       "dt": 1586973600,
       "main": {
-        "temp": 282.68,
-        "feels_like": 279.91,
-        "temp_min": 282.68,
-        "temp_max": 282.68,
+        "temp": 9.53,
+        "feels_like": 6.76,
+        "temp_min": 9.53,
+        "temp_max": 9.53,
         "pressure": 1020,
         "sea_level": 1020,
         "grnd_level": 968,
@@ -573,10 +537,10 @@
     {
       "dt": 1586984400,
       "main": {
-        "temp": 279.21,
-        "feels_like": 276.32,
-        "temp_min": 279.21,
-        "temp_max": 279.21,
+        "temp": 6.06,
+        "feels_like": 3.17,
+        "temp_min": 6.06,
+        "temp_max": 6.06,
         "pressure": 1021,
         "sea_level": 1021,
         "grnd_level": 968,
@@ -606,10 +570,10 @@
     {
       "dt": 1586995200,
       "main": {
-        "temp": 277.83,
-        "feels_like": 275.37,
-        "temp_min": 277.83,
-        "temp_max": 277.83,
+        "temp": 4.68,
+        "feels_like": 2.22,
+        "temp_min": 4.68,
+        "temp_max": 4.68,
         "pressure": 1022,
         "sea_level": 1022,
         "grnd_level": 968,
@@ -639,10 +603,10 @@
     {
       "dt": 1587006000,
       "main": {
-        "temp": 277.62,
-        "feels_like": 274.91,
-        "temp_min": 277.62,
-        "temp_max": 277.62,
+        "temp": 4.47,
+        "feels_like": 1.76,
+        "temp_min": 4.47,
+        "temp_max": 4.47,
         "pressure": 1021,
         "sea_level": 1021,
         "grnd_level": 968,
@@ -672,10 +636,10 @@
     {
       "dt": 1587016800,
       "main": {
-        "temp": 280.81,
-        "feels_like": 278.03,
-        "temp_min": 280.81,
-        "temp_max": 280.81,
+        "temp": 7.66,
+        "feels_like": 4.88,
+        "temp_min": 7.66,
+        "temp_max": 7.66,
         "pressure": 1021,
         "sea_level": 1021,
         "grnd_level": 968,
@@ -705,10 +669,10 @@
     {
       "dt": 1587027600,
       "main": {
-        "temp": 290.14,
-        "feels_like": 288.05,
-        "temp_min": 290.14,
-        "temp_max": 290.14,
+        "temp": 16.99,
+        "feels_like": 14.9,
+        "temp_min": 16.99,
+        "temp_max": 16.99,
         "pressure": 1019,
         "sea_level": 1019,
         "grnd_level": 968,
@@ -738,10 +702,10 @@
     {
       "dt": 1587038400,
       "main": {
-        "temp": 294.01,
-        "feels_like": 292.38,
-        "temp_min": 294.01,
-        "temp_max": 294.01,
+        "temp": 20.86,
+        "feels_like": 19.23,
+        "temp_min": 20.86,
+        "temp_max": 20.86,
         "pressure": 1017,
         "sea_level": 1017,
         "grnd_level": 967,
@@ -771,10 +735,10 @@
     {
       "dt": 1587049200,
       "main": {
-        "temp": 293.71,
-        "feels_like": 291.95,
-        "temp_min": 293.71,
-        "temp_max": 293.71,
+        "temp": 20.56,
+        "feels_like": 18.8,
+        "temp_min": 20.56,
+        "temp_max": 20.56,
         "pressure": 1016,
         "sea_level": 1016,
         "grnd_level": 966,
@@ -804,10 +768,10 @@
     {
       "dt": 1587060000,
       "main": {
-        "temp": 287.24,
-        "feels_like": 285.85,
-        "temp_min": 287.24,
-        "temp_max": 287.24,
+        "temp": 14.09,
+        "feels_like": 12.7,
+        "temp_min": 14.09,
+        "temp_max": 14.09,
         "pressure": 1016,
         "sea_level": 1016,
         "grnd_level": 965,
@@ -837,10 +801,10 @@
     {
       "dt": 1587070800,
       "main": {
-        "temp": 284.57,
-        "feels_like": 282.88,
-        "temp_min": 284.57,
-        "temp_max": 284.57,
+        "temp": 11.42,
+        "feels_like": 9.73,
+        "temp_min": 11.42,
+        "temp_max": 11.42,
         "pressure": 1018,
         "sea_level": 1018,
         "grnd_level": 966,
@@ -870,10 +834,10 @@
     {
       "dt": 1587081600,
       "main": {
-        "temp": 283.33,
-        "feels_like": 281.38,
-        "temp_min": 283.33,
-        "temp_max": 283.33,
+        "temp": 10.18,
+        "feels_like": 8.23,
+        "temp_min": 10.18,
+        "temp_max": 10.18,
         "pressure": 1017,
         "sea_level": 1017,
         "grnd_level": 965,
@@ -903,10 +867,10 @@
     {
       "dt": 1587092400,
       "main": {
-        "temp": 282.25,
-        "feels_like": 280.46,
-        "temp_min": 282.25,
-        "temp_max": 282.25,
+        "temp": 9.1,
+        "feels_like": 7.31,
+        "temp_min": 9.1,
+        "temp_max": 9.1,
         "pressure": 1017,
         "sea_level": 1017,
         "grnd_level": 965,
@@ -936,10 +900,10 @@
     {
       "dt": 1587103200,
       "main": {
-        "temp": 284.73,
-        "feels_like": 283.26,
-        "temp_min": 284.73,
-        "temp_max": 284.73,
+        "temp": 11.58,
+        "feels_like": 10.11,
+        "temp_min": 11.58,
+        "temp_max": 11.58,
         "pressure": 1017,
         "sea_level": 1017,
         "grnd_level": 965,
@@ -969,10 +933,10 @@
     {
       "dt": 1587114000,
       "main": {
-        "temp": 291.86,
-        "feels_like": 291,
-        "temp_min": 291.86,
-        "temp_max": 291.86,
+        "temp": 18.71,
+        "feels_like": 17.85,
+        "temp_min": 18.71,
+        "temp_max": 18.71,
         "pressure": 1016,
         "sea_level": 1016,
         "grnd_level": 965,
@@ -1002,10 +966,10 @@
     {
       "dt": 1587124800,
       "main": {
-        "temp": 295.87,
-        "feels_like": 295.33,
-        "temp_min": 295.87,
-        "temp_max": 295.87,
+        "temp": 22.72,
+        "feels_like": 22.18,
+        "temp_min": 22.72,
+        "temp_max": 22.72,
         "pressure": 1014,
         "sea_level": 1014,
         "grnd_level": 964,
@@ -1035,10 +999,10 @@
     {
       "dt": 1587135600,
       "main": {
-        "temp": 294.62,
-        "feels_like": 294.02,
-        "temp_min": 294.62,
-        "temp_max": 294.62,
+        "temp": 21.47,
+        "feels_like": 20.87,
+        "temp_min": 21.47,
+        "temp_max": 21.47,
         "pressure": 1012,
         "sea_level": 1012,
         "grnd_level": 963,
@@ -1068,10 +1032,10 @@
     {
       "dt": 1587146400,
       "main": {
-        "temp": 288.68,
-        "feels_like": 287.9,
-        "temp_min": 288.68,
-        "temp_max": 288.68,
+        "temp": 15.53,
+        "feels_like": 14.75,
+        "temp_min": 15.53,
+        "temp_max": 15.53,
         "pressure": 1012,
         "sea_level": 1012,
         "grnd_level": 962,
@@ -1104,10 +1068,10 @@
     {
       "dt": 1587157200,
       "main": {
-        "temp": 286.07,
-        "feels_like": 285.32,
-        "temp_min": 286.07,
-        "temp_max": 286.07,
+        "temp": 12.92,
+        "feels_like": 12.17,
+        "temp_min": 12.92,
+        "temp_max": 12.92,
         "pressure": 1014,
         "sea_level": 1014,
         "grnd_level": 963,
@@ -1137,10 +1101,10 @@
     {
       "dt": 1587168000,
       "main": {
-        "temp": 284.63,
-        "feels_like": 283.73,
-        "temp_min": 284.63,
-        "temp_max": 284.63,
+        "temp": 11.48,
+        "feels_like": 10.58,
+        "temp_min": 11.48,
+        "temp_max": 11.48,
         "pressure": 1014,
         "sea_level": 1014,
         "grnd_level": 962,
@@ -1170,10 +1134,10 @@
     {
       "dt": 1587178800,
       "main": {
-        "temp": 284.24,
-        "feels_like": 283.16,
-        "temp_min": 284.24,
-        "temp_max": 284.24,
+        "temp": 11.09,
+        "feels_like": 10.01,
+        "temp_min": 11.09,
+        "temp_max": 11.09,
         "pressure": 1014,
         "sea_level": 1014,
         "grnd_level": 962,
@@ -1203,10 +1167,10 @@
     {
       "dt": 1587189600,
       "main": {
-        "temp": 286.57,
-        "feels_like": 285.75,
-        "temp_min": 286.57,
-        "temp_max": 286.57,
+        "temp": 13.42,
+        "feels_like": 12.6,
+        "temp_min": 13.42,
+        "temp_max": 13.42,
         "pressure": 1014,
         "sea_level": 1014,
         "grnd_level": 962,
@@ -1236,10 +1200,10 @@
     {
       "dt": 1587200400,
       "main": {
-        "temp": 292.61,
-        "feels_like": 291.9,
-        "temp_min": 292.61,
-        "temp_max": 292.61,
+        "temp": 19.46,
+        "feels_like": 18.75,
+        "temp_min": 19.46,
+        "temp_max": 19.46,
         "pressure": 1013,
         "sea_level": 1013,
         "grnd_level": 963,
@@ -1269,10 +1233,10 @@
     {
       "dt": 1587211200,
       "main": {
-        "temp": 293.17,
-        "feels_like": 291.89,
-        "temp_min": 293.17,
-        "temp_max": 293.17,
+        "temp": 20.02,
+        "feels_like": 18.74,
+        "temp_min": 20.02,
+        "temp_max": 20.02,
         "pressure": 1012,
         "sea_level": 1012,
         "grnd_level": 962,
@@ -1305,10 +1269,10 @@
     {
       "dt": 1587222000,
       "main": {
-        "temp": 293.48,
-        "feels_like": 292.13,
-        "temp_min": 293.48,
-        "temp_max": 293.48,
+        "temp": 20.33,
+        "feels_like": 18.98,
+        "temp_min": 20.33,
+        "temp_max": 20.33,
         "pressure": 1011,
         "sea_level": 1011,
         "grnd_level": 961,
@@ -1337,6 +1301,42 @@
         "pod": "d"
       },
       "dt_txt": "2020-04-18 15:00:00"
+    },
+    {
+      "dt": 1587232800,
+      "main": {
+        "temp": 15.61,
+        "feels_like": 14.87,
+        "temp_min": 15.61,
+        "temp_max": 15.61,
+        "pressure": 1010,
+        "sea_level": 1010,
+        "grnd_level": 960,
+        "humidity": 69,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 91
+      },
+      "wind": {
+        "speed": 1.1,
+        "deg": 243
+      },
+      "rain": {
+        "3h": 0.51
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2020-04-18 18:00:00"
     }
   ],
   "city": {
