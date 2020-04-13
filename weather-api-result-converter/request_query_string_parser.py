@@ -28,3 +28,7 @@ class RequestQueryStringParser:
             return self.parsed_query_dict[value_name][0]
 
         return default_value
+
+
+def create_parser_with_default_values() -> RequestQueryStringParser:
+    return RequestQueryStringParser('key=&q=&format=json')
