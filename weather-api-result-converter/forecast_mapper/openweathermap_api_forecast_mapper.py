@@ -1,10 +1,13 @@
 import datetime
 
-from forecast_mapper.base_forecast_mapper import BaseForecastMapper, round_to_str
+from forecast_mapper.base_forecast_mapper import \
+    BaseForecastMapper, \
+    round_to_str, \
+    unix_timestamp_to_world_weather_day_time
 
 
-def weather_api_to_world_weather_code(weather_api_code: int):
-    return str(weather_api_code - 887)
+def metric_temp_to_imperial(celsius: float):
+    return celsius * 1.8 + 32
 
 
 def forecast_day_to_weather_element(forecast_day: dict):
@@ -44,77 +47,83 @@ def forecast_day_to_weather_element(forecast_day: dict):
     }
 
 
-def forecast_day_hour_to_hourly_element(forecast_day_hour: dict):
-    time_epoch = datetime.datetime.fromtimestamp(forecast_day_hour['time_epoch'])
-
-    return {
-        'time': str(int(time_epoch.time().__format__("%I%M"))),
-        'tempC': round_to_str(forecast_day_hour['temp_c']),
-        'tempF': round_to_str(forecast_day_hour['temp_f']),
-        'windspeedMiles': round_to_str(forecast_day_hour['wind_mph']),
-        'windspeedKmph': round_to_str(forecast_day_hour['wind_kph']),
-        'winddirDegree': round_to_str(forecast_day_hour['wind_degree']),
-        'winddir16Point': forecast_day_hour['wind_dir'],
-        'weatherCode':
-            weather_api_to_world_weather_code(forecast_day_hour['condition']['code']),
-        'weatherIconUrl': [
-            {
-                'value': 'http:' + forecast_day_hour['condition']['icon']
-            }
-        ],
-        'weatherDesc': [
-            {
-                'value': forecast_day_hour['condition']['text']
-            }
-        ],
-        'precipMM': str(forecast_day_hour['precip_mm']),
-        'precipInches': str(forecast_day_hour['precip_in']),
-        'humidity': round_to_str(forecast_day_hour['humidity']),
-        'visibility': round_to_str(forecast_day_hour['vis_km']),
-        'visibilityMiles': round_to_str(forecast_day_hour['vis_miles']),
-        'pressure': round_to_str(forecast_day_hour['pressure_mb']),
-        'pressureInches': round_to_str(forecast_day_hour['pressure_in']),
-        'cloudcover': round_to_str(forecast_day_hour['cloud']),
-        'HeatIndexC': round_to_str(forecast_day_hour['heatindex_c']),
-        'HeatIndexF': round_to_str(forecast_day_hour['heatindex_f']),
-        'DewPointC': round_to_str(forecast_day_hour['dewpoint_c']),
-        'DewPointF': round_to_str(forecast_day_hour['dewpoint_f']),
-        'WindChillC': round_to_str(forecast_day_hour['windchill_c']),
-        'WindChillF': round_to_str(forecast_day_hour['windchill_f']),
-        'WindGustMiles': round_to_str(forecast_day_hour['gust_mph']),
-        'WindGustKmph': round_to_str(forecast_day_hour['gust_kph']),
-        'FeelsLikeC': round_to_str(forecast_day_hour['feelslike_c']),
-        'FeelsLikeF': round_to_str(forecast_day_hour['feelslike_f']),
-        'chanceofrain': round_to_str(forecast_day_hour['chance_of_rain']),
-        'chanceofsnow': round_to_str(forecast_day_hour['chance_of_snow'])
-    }
-
-
 class OpenweathermapAPIForecastMapper(BaseForecastMapper):
 
+    def __init__(self, json_string):
+        super().__init__(json_string)
+        self.corresponding_code_key = 'openwaeathermap'
+
     def to_output_dictionary(self):
+        """
+        {
+              "dt": 1586800800,
+              "main": {
+                "temp": 285,
+                "feels_like": 280.82,
+                "temp_min": 283.97,
+                "temp_max": 285,
+                "pressure": 1015,
+                "sea_level": 1015,
+                "grnd_level": 963,
+                "humidity": 70,
+                "temp_kf": 1.03
+              },
+              "weather": [
+                {
+                  "id": 500,
+                  "main": "Rain",
+                  "description": "light rain",
+                  "icon": "10d"
+                }
+              ],
+              "clouds": {
+                "all": 52
+              },
+              "wind": {
+                "speed": 4.83,
+                "deg": 31
+              },
+              "rain": {
+                "3h": 0.71
+              },
+              "sys": {
+                "pod": "d"
+              },
+              "dt_txt": "2020-04-13 18:00:00"
+            },
+        """
         source_dict = self.forecast_input_dictionary
-        current = source_dict['current']
-        last_updated = datetime.datetime.fromtimestamp(current['last_updated_epoch'])
-        mapped = {
+        current = source_dict['list'][0]
+        current_timestamp = datetime.datetime.now().timestamp()
+
+        current_corresponding_code = current['weather']['id']
+        return {
             'data': {
                 'current_condition': [
+                    # not yet provided with current implementation
+                    # just taking the first element of list as current
                     {
-                        'observation_time': last_updated.time().__format__("%I:%M %p"),
-                        'temp_C': round_to_str(current['temp_c']),
-                        'temp_F': round_to_str(current['temp_f']),
+                        'observation_time':
+                            unix_timestamp_to_world_weather_day_time(current_timestamp),
+                        'temp_C': round_to_str(current['main']['temp']),
+                        'temp_F': round_to_str(metric_temp_to_imperial(current['main']['temp'])),
                         'weatherCode':
-                            weather_api_to_world_weather_code(current['condition']['code']),
-                        'weatherIconUrl': [
-                            {
-                                'value': 'http:' + current['condition']['icon']
-                            }
-                        ],
-                        'weatherDesc': [
-                            {
-                                'value': current['condition']['text']
-                            }
-                        ],
+                            self.world_weather_code_by_corresponding_code(
+                                current_corresponding_code),
+                        'weatherIconUrl':
+                            [
+                                {
+                                    'value': self.make_icon_url_by_corresponding_code(
+                                        current_corresponding_code)
+                                }
+                            ],
+                        'weatherDesc':
+                            [
+                                {
+                                    'value': self.get_condition_by_corresponding_code(
+                                        current_corresponding_code)
+                                }
+                            ],
                         'windspeedMiles': round_to_str(current['wind_mph']),
                         'windspeedKmph': round_to_str(current['wind_kph']),
                         'winddirDegree': round_to_str(current['wind_degree']),
@@ -139,8 +148,6 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
             }
         }
 
-        return mapped
-
     def to_weather_elements(self):
         source_dict = self.forecast_input_dictionary
         weather_elements = []
@@ -148,3 +155,48 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
             weather_elements.append(forecast_day_to_weather_element(forecast_day))
 
         return weather_elements
+
+    def forecast_day_hour_to_hourly_element(self, forecast_day_hour: dict):
+        time_epoch = datetime.datetime.fromtimestamp(forecast_day_hour['time_epoch'])
+
+        return {
+            'time': str(int(time_epoch.time().__format__("%I%M"))),
+            'tempC': round_to_str(forecast_day_hour['temp_c']),
+            'tempF': round_to_str(forecast_day_hour['temp_f']),
+            'windspeedMiles': round_to_str(forecast_day_hour['wind_mph']),
+            'windspeedKmph': round_to_str(forecast_day_hour['wind_kph']),
+            'winddirDegree': round_to_str(forecast_day_hour['wind_degree']),
+            'winddir16Point': forecast_day_hour['wind_dir'],
+            'weatherCode':
+                self.world_weather_code_by_corresponding_code(forecast_day_hour['weather']['id']),
+            'weatherIconUrl': [
+                {
+                    'value': 'http:' + forecast_day_hour['condition']['icon']
+                }
+            ],
+            'weatherDesc': [
+                {
+                    'value': forecast_day_hour['condition']['text']
+                }
+            ],
+            'precipMM': str(forecast_day_hour['precip_mm']),
+            'precipInches': str(forecast_day_hour['precip_in']),
+            'humidity': round_to_str(forecast_day_hour['humidity']),
+            'visibility': round_to_str(forecast_day_hour['vis_km']),
+            'visibilityMiles': round_to_str(forecast_day_hour['vis_miles']),
+            'pressure': round_to_str(forecast_day_hour['pressure_mb']),
+            'pressureInches': round_to_str(forecast_day_hour['pressure_in']),
+            'cloudcover': round_to_str(forecast_day_hour['cloud']),
+            'HeatIndexC': round_to_str(forecast_day_hour['heatindex_c']),
+            'HeatIndexF': round_to_str(forecast_day_hour['heatindex_f']),
+            'DewPointC': round_to_str(forecast_day_hour['dewpoint_c']),
+            'DewPointF': round_to_str(forecast_day_hour['dewpoint_f']),
+            'WindChillC': round_to_str(forecast_day_hour['windchill_c']),
+            'WindChillF': round_to_str(forecast_day_hour['windchill_f']),
+            'WindGustMiles': round_to_str(forecast_day_hour['gust_mph']),
+            'WindGustKmph': round_to_str(forecast_day_hour['gust_kph']),
+            'FeelsLikeC': round_to_str(forecast_day_hour['feelslike_c']),
+            'FeelsLikeF': round_to_str(forecast_day_hour['feelslike_f']),
+            'chanceofrain': round_to_str(forecast_day_hour['chance_of_rain']),
+            'chanceofsnow': round_to_str(forecast_day_hour['chance_of_snow'])
+        }

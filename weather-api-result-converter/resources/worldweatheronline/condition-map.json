@@ -1,0 +1,830 @@
+[
+  {
+    "code": 113,
+    "description": {
+      "en": "Clear/Sunny"
+    },
+    "symbol": {
+      "day": "wsymbol_0001_sunny",
+      "night": "wsymbol_0008_clear_sky_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1000
+      ],
+      "openweathermap": [
+        800
+      ]
+    }
+  },
+  {
+    "code": 116,
+    "description": {
+      "en": "Partly Cloudy"
+    },
+    "symbol": {
+      "day": "wsymbol_0002_sunny_intervals",
+      "night": "wsymbol_0008_clear_sky_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1003
+      ],
+      "openweathermap": [
+        801, 802
+      ]
+    }
+  },
+  {
+    "code": 119,
+    "description": {
+      "en": "Cloudy"
+    },
+    "symbol": {
+      "day": "wsymbol_0003_white_cloud",
+      "night": "wsymbol_0004_black_low_cloud"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1006
+      ],
+      "openweathermap": [
+        803
+      ]
+    }
+  },
+  {
+    "code": 122,
+    "description": {
+      "en": "Overcast"
+    },
+    "symbol": {
+      "day": "wsymbol_0004_black_low_cloud",
+      "night": "wsymbol_0004_black_low_cloud"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1009
+      ],
+      "openweathermap": [
+        804
+      ]
+    }
+  },
+  {
+    "code": 143,
+    "description": {
+      "en": "Mist"
+    },
+    "symbol": {
+      "day": "wsymbol_0006_mist",
+      "night": "wsymbol_0006_mist"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1030
+      ],
+      "openweathermap": [
+        701, 711, 721, 731, 751, 761, 762
+      ]
+    }
+  },
+  {
+    "code": 176,
+    "description": {
+      "en": "Patchy rain nearby"
+    },
+    "symbol": {
+      "day": "wsymbol_0009_light_rain_showers",
+      "night": "wsymbol_0025_light_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1063
+      ]
+    }
+  },
+  {
+    "code": 179,
+    "description": {
+      "en": "Patchy snow nearby"
+    },
+    "symbol": {
+      "day": "wsymbol_0013_sleet_showers",
+      "night": "wsymbol_0029_sleet_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1066
+      ]
+    }
+  },
+  {
+    "code": 182,
+    "description": {
+      "en": "Patchy sleet nearby"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1069
+      ],
+      "openweathermap": [
+        611
+      ]
+    }
+  },
+  {
+    "code": 185,
+    "description": {
+      "en": "Patchy freezing drizzle nearby"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1072
+      ]
+    }
+  },
+  {
+    "code": 200,
+    "description": {
+      "en": "Thundery outbreaks in nearby"
+    },
+    "symbol": {
+      "day": "wsymbol_0016_thundery_showers",
+      "night": "wsymbol_0032_thundery_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1087
+      ],
+      "openweathermap": [
+        201, 210, 211, 212, 221
+      ]
+    }
+  },
+  {
+    "code": 227,
+    "description": {
+      "en": "Blowing snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0019_cloudy_with_light_snow",
+      "night": "wsymbol_0035_cloudy_with_light_snow_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1115
+      ]
+    }
+  },
+  {
+    "code": 230,
+    "description": {
+      "en": "Blizzard"
+    },
+    "symbol": {
+      "day": "wsymbol_0020_cloudy_with_heavy_snow",
+      "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1118
+      ]
+    }
+  },
+  {
+    "code": 248,
+    "description": {
+      "en": "Fog"
+    },
+    "symbol": {
+      "day": "wsymbol_0007_fog",
+      "night": "wsymbol_0007_fog"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1136
+      ],
+      "openweathermap": [
+        741
+      ]
+    }
+  },
+  {
+    "code": 260,
+    "description": {
+      "en": "Freezing fog"
+    },
+    "symbol": {
+      "day": "wsymbol_0007_fog",
+      "night": "wsymbol_0007_fog"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1148
+      ]
+    }
+  },
+  {
+    "code": 263,
+    "description": {
+      "en": "Patchy light drizzle"
+    },
+    "symbol": {
+      "day": "wsymbol_0009_light_rain_showers",
+      "night": "wsymbol_0025_light_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1151
+      ],
+      "openweathermap": [
+        300, 310
+      ]
+    }
+  },
+  {
+    "code": 266,
+    "description": {
+      "en": "Light drizzle"
+    },
+    "symbol": {
+      "day": "wsymbol_0017_cloudy_with_light_rain",
+      "night": "wsymbol_0033_cloudy_with_light_rain_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1154
+      ],
+      "openweathermap": [
+        301, 311, 321
+      ]
+    }
+  },
+  {
+    "code": 281,
+    "description": {
+      "en": "Freezing drizzle"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1169
+      ]
+    }
+  },
+  {
+    "code": 284,
+    "description": {
+      "en": "Heavy freezing drizzle"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1171
+      ]
+    }
+  },
+  {
+    "code": 293,
+    "description": {
+      "en": "Patchy light rain"
+    },
+    "symbol": {
+      "day": "wsymbol_0017_cloudy_with_light_rain",
+      "night": "wsymbol_0033_cloudy_with_light_rain_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1180
+      ]
+    }
+  },
+  {
+    "code": 296,
+    "description": {
+      "en": "Light rain"
+    },
+    "symbol": {
+      "day": "wsymbol_0017_cloudy_with_light_rain",
+      "night": "wsymbol_0025_light_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1183
+      ],
+      "openweathermap": [
+        500
+      ]
+    }
+  },
+  {
+    "code": 299,
+    "description": {
+      "en": "Moderate rain at times"
+    },
+    "symbol": {
+      "day": "wsymbol_0010_heavy_rain_showers",
+      "night": "wsymbol_0026_heavy_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1186
+      ],
+      "openweathermap": [
+        521
+      ]
+    }
+  },
+  {
+    "code": 302,
+    "description": {
+      "en": "Moderate rain"
+    },
+    "symbol": {
+      "day": "wsymbol_0018_cloudy_with_heavy_rain",
+      "night": "wsymbol_0034_cloudy_with_heavy_rain_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1189
+      ],
+      "openweathermap": [
+        501, 302, 312
+      ]
+    }
+  },
+  {
+    "code": 305,
+    "description": {
+      "en": "Heavy rain at times"
+    },
+    "symbol": {
+      "day": "wsymbol_0010_heavy_rain_showers",
+      "night": "wsymbol_0026_heavy_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1192
+      ],
+      "openweathermap": [
+        522
+      ]
+    }
+  },
+  {
+    "code": 308,
+    "description": {
+      "en": "Heavy rain"
+    },
+    "symbol": {
+      "day": "wsymbol_0018_cloudy_with_heavy_rain",
+      "night": "wsymbol_0034_cloudy_with_heavy_rain_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1195
+      ],
+      "openweathermap": [
+        502, 503, 504
+      ]
+    }
+  },
+  {
+    "code": 311,
+    "description": {
+      "en": "Light freezing rain"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1198
+      ]
+    }
+  },
+  {
+    "code": 314,
+    "description": {
+      "en": "Moderate or Heavy freezing rain"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1201
+      ],
+      "openweathermap": [
+        511
+      ]
+    }
+  },
+  {
+    "code": 317,
+    "description": {
+      "en": "Light sleet"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1204
+      ],
+      "openweathermap": [
+        615
+      ]
+    }
+  },
+  {
+    "code": 320,
+    "description": {
+      "en": "Moderate or heavy sleet"
+    },
+    "symbol": {
+      "day": "wsymbol_0019_cloudy_with_light_snow",
+      "night": "wsymbol_0035_cloudy_with_light_snow_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1207
+      ],
+      "openweathermap": [
+        616
+      ]
+    }
+  },
+  {
+    "code": 323,
+    "description": {
+      "en": "Patchy light snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0011_light_snow_showers",
+      "night": "wsymbol_0027_light_snow_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1210
+      ]
+    }
+  },
+  {
+    "code": 326,
+    "description": {
+      "en": "Light snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0011_light_snow_showers",
+      "night": "wsymbol_0027_light_snow_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1213
+      ],
+      "openweathermap": [
+        600
+      ]
+    }
+  },
+  {
+    "code": 329,
+    "description": {
+      "en": "Patchy moderate snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0020_cloudy_with_heavy_snow",
+      "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1216
+      ],
+      "openweathermap": [
+        621
+      ]
+    }
+  },
+  {
+    "code": 332,
+    "description": {
+      "en": "Moderate snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0020_cloudy_with_heavy_snow",
+      "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1219
+      ],
+      "openweathermap": [
+        601
+      ]
+    }
+  },
+  {
+    "code": 335,
+    "description": {
+      "en": "Patchy heavy snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0012_heavy_snow_showers",
+      "night": "wsymbol_0028_heavy_snow_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1222
+      ]
+    }
+  },
+  {
+    "code": 338,
+    "description": {
+      "en": "Heavy snow"
+    },
+    "symbol": {
+      "day": "wsymbol_0020_cloudy_with_heavy_snow",
+      "night": "wsymbol_0036_cloudy_with_heavy_snow_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1225
+      ],
+      "openweathermap": [
+        602
+      ]
+    }
+  },
+  {
+    "code": 350,
+    "description": {
+      "en": "Ice pellets"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1237
+      ]
+    }
+  },
+  {
+    "code": 353,
+    "description": {
+      "en": "Light rain shower"
+    },
+    "symbol": {
+      "day": "wsymbol_0009_light_rain_showers",
+      "night": "wsymbol_0025_light_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1240
+      ],
+      "openweathermap": [
+        520, 313
+      ]
+    }
+  },
+  {
+    "code": 356,
+    "description": {
+      "en": "Moderate or heavy rain shower"
+    },
+    "symbol": {
+      "day": "wsymbol_0010_heavy_rain_showers",
+      "night": "wsymbol_0026_heavy_rain_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1243
+      ],
+      "openweathermap": [
+        314
+      ]
+    }
+  },
+  {
+    "code": 359,
+    "description": {
+      "en": "Torrential rain shower"
+    },
+    "symbol": {
+      "day": "wsymbol_0018_cloudy_with_heavy_rain",
+      "night": "wsymbol_0034_cloudy_with_heavy_rain_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1246
+      ],
+      "openweathermap": [
+        531
+      ]
+    }
+  },
+  {
+    "code": 362,
+    "description": {
+      "en": "Light sleet showers"
+    },
+    "symbol": {
+      "day": "wsymbol_0013_sleet_showers",
+      "night": "wsymbol_0029_sleet_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1249
+      ],
+      "openweathermap": [
+        612
+      ]
+    }
+  },
+  {
+    "code": 365,
+    "description": {
+      "en": "Moderate or heavy sleet showers"
+    },
+    "symbol": {
+      "day": "wsymbol_0013_sleet_showers",
+      "night": "wsymbol_0029_sleet_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1252
+      ],
+      "openweathermap": [
+        613
+      ]
+    }
+  },
+  {
+    "code": 368,
+    "description": {
+      "en": "Light snow showers"
+    },
+    "symbol": {
+      "day": "wsymbol_0011_light_snow_showers",
+      "night": "wsymbol_0027_light_snow_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1255
+      ],
+      "openweathermap": [
+        620
+      ]
+    }
+  },
+  {
+    "code": 371,
+    "description": {
+      "en": "Moderate or heavy snow showers"
+    },
+    "symbol": {
+      "day": "wsymbol_0012_heavy_snow_showers",
+      "night": "wsymbol_0028_heavy_snow_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1258
+      ],
+      "openweathermap": [
+        622
+      ]
+    }
+  },
+  {
+    "code": 374,
+    "description": {
+      "en": "Light showers of ice pellets"
+    },
+    "symbol": {
+      "day": "wsymbol_0013_sleet_showers",
+      "night": "wsymbol_0029_sleet_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1261
+      ]
+    }
+  },
+  {
+    "code": 377,
+    "description": {
+      "en": "Moderate or heavy showers of ice pellets"
+    },
+    "symbol": {
+      "day": "wsymbol_0021_cloudy_with_sleet",
+      "night": "wsymbol_0037_cloudy_with_sleet_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1264
+      ]
+    }
+  },
+  {
+    "code": 386,
+    "description": {
+      "en": "Patchy light rain in area with thunder"
+    },
+    "symbol": {
+      "day": "wsymbol_0016_thundery_showers",
+      "night": "wsymbol_0032_thundery_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1273
+      ],
+      "openweathermap": [
+        200, 230
+      ]
+    }
+  },
+  {
+    "code": 389,
+    "description": {
+      "en": "Moderate or heavy rain in area with thunder"
+    },
+    "symbol": {
+      "day": "wsymbol_0024_thunderstorms",
+      "night": "wsymbol_0040_thunderstorms_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1276
+      ],
+      "openweathermap": [
+        202, 231, 232
+      ]
+    }
+  },
+  {
+    "code": 392,
+    "description": {
+      "en": "Patchy light snow in area with thunder"
+    },
+    "symbol": {
+      "day": "wsymbol_0016_thundery_showers",
+      "night": "wsymbol_0032_thundery_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1279
+      ]
+    }
+  },
+  {
+    "code": 395,
+    "description": {
+      "en": "Moderate or heavy snow in area with thunder"
+    },
+    "symbol": {
+      "day": "wsymbol_0012_heavy_snow_showers",
+      "night": "wsymbol_0028_heavy_snow_showers_night"
+    },
+    "corresponding_codes": {
+      "weatherAPI": [
+        1282
+      ]
+    }
+  },
+  {
+    "code": 9999,
+    "description": {
+      "en": "unknown in WorldWeatherOnline"
+    },
+    "symbol": {
+      "day": "",
+      "night": ""
+    },
+    "corresponding_codes": {
+      "openweathermap": [
+        771, 781
+      ]
+    }
+  }
+]

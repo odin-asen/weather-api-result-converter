@@ -29,7 +29,7 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
 
     def make_forecast_url(self):
         url_base = 'http://api.openweathermap.org/data/2.5/forecast'
-        return url_base + '?APPID={api_key}&q={query},de&mode=json'.format(
+        return url_base + '?APPID={api_key}&q={query},de&mode=json&units=metric'.format(
             api_key=self.query_string_parser.retrieve_api_key(),
             query=self.query_string_parser.retrieve_search_query()
         )
