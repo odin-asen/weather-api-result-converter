@@ -24,3 +24,11 @@ Then, include the minimum configuration example to your lighttpd webserver and m
 ## Development
 To test modifications the resources folder contains static files which can be used to test the data mapping to the
 desired response schema.
+
+## Installation (dependencies)
+Apart from builtin modules, this application requires third-party python packages
+* [dicttoxml](https://pypi.org/project/dicttoxml/), at least version 1.7.4
+
+Before calling `main.py` you need to install these dependencies with pip, e.g. `pip install dicttoxml` or 
+`pip3 install dicttoxml`.
+ 
