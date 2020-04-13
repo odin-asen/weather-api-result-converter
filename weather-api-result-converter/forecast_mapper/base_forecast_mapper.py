@@ -17,7 +17,7 @@ class BaseForecastMapper:
         self.forecast_input_dictionary = json.loads(json_string)
 
         self.corresponding_code_key = ''
-        mapping_file_path = 'resources/worldweatheronline/condition-map.json'
+        mapping_file_path = 'resources/condition-map.json'
         with open(mapping_file_path, 'r') as conditions_map_json_file:
             self.conditions_mappings = json.loads(conditions_map_json_file.read())
 

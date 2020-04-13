@@ -6,8 +6,55 @@ from forecast_mapper.base_forecast_mapper import \
     unix_timestamp_to_world_weather_day_time
 
 
-def metric_temp_to_imperial(celsius: float):
+def celsius_to_fahrenheit(celsius: float):
     return celsius * 1.8 + 32
+
+
+def kph_to_miles(kph: float):
+    return kph * 1.6
+
+
+def mm_to_inch(milli_meter: float):
+    return milli_meter / 2.54
+
+
+def h_pa_to_inches(h_pa: float):
+    return h_pa * 0.0295299830714447
+
+
+# noinspection Pylint
+def degree_to_wind_16_point_str(degree: float):
+    if degree >= 347.75 or degree < 12.25:
+        return 'N'
+    if 12.25 <= degree < 34.75:
+        return 'NNE'
+    if 34.75 <= degree < 57.25:
+        return 'NE'
+    if 57.25 <= degree < 79.75:
+        return 'ENE'
+    if 79.75 <= degree < 102.25:
+        return 'E'
+    if 102.25 <= degree < 124.75:
+        return 'ESE'
+    if 124.75 <= degree < 147.25:
+        return 'SE'
+    if 147.25 <= degree < 169.75:
+        return 'SSE'
+    if 169.75 <= degree < 192.25:
+        return 'S'
+    if 192.25 <= degree < 214.75:
+        return 'SSW'
+    if 214.75 <= degree < 237.25:
+        return 'SW'
+    if 237.25 <= degree < 259.75:
+        return 'WSW'
+    if 259.75 <= degree < 282.25:
+        return 'W'
+    if 282.25 <= degree < 304.75:
+        return 'WNW'
+    if 304.75 <= degree < 327.25:
+        return 'NW'
+    return 'NNW'
 
 
 def forecast_day_to_weather_element(forecast_day: dict):
@@ -54,44 +101,6 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
         self.corresponding_code_key = 'openwaeathermap'
 
     def to_output_dictionary(self):
-        """
-        {
-              "dt": 1586800800,
-              "main": {
-                "temp": 285,
-                "feels_like": 280.82,
-                "temp_min": 283.97,
-                "temp_max": 285,
-                "pressure": 1015,
-                "sea_level": 1015,
-                "grnd_level": 963,
-                "humidity": 70,
-                "temp_kf": 1.03
-              },
-              "weather": [
-                {
-                  "id": 500,
-                  "main": "Rain",
-                  "description": "light rain",
-                  "icon": "10d"
-                }
-              ],
-              "clouds": {
-                "all": 52
-              },
-              "wind": {
-                "speed": 4.83,
-                "deg": 31
-              },
-              "rain": {
-                "3h": 0.71
-              },
-              "sys": {
-                "pod": "d"
-              },
-              "dt_txt": "2020-04-13 18:00:00"
-            },
-        """
         source_dict = self.forecast_input_dictionary
         current = source_dict['list'][0]
         current_timestamp = datetime.datetime.now().timestamp()
@@ -106,7 +115,7 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                         'observation_time':
                             unix_timestamp_to_world_weather_day_time(current_timestamp),
                         'temp_C': round_to_str(current['main']['temp']),
-                        'temp_F': round_to_str(metric_temp_to_imperial(current['main']['temp'])),
+                        'temp_F': round_to_str(celsius_to_fahrenheit(current['main']['temp'])),
                         'weatherCode':
                             self.world_weather_code_by_corresponding_code(
                                 current_corresponding_code),
@@ -124,21 +133,27 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                                         current_corresponding_code)
                                 }
                             ],
-                        'windspeedMiles': round_to_str(current['wind_mph']),
-                        'windspeedKmph': round_to_str(current['wind_kph']),
-                        'winddirDegree': round_to_str(current['wind_degree']),
-                        'winddir16Point': current['wind_dir'],
-                        'precipMM': str(current['precip_mm']),
-                        'precipInches': str(current['precip_in']),
-                        'humidity': round_to_str(current['humidity']),
-                        'visibility': round_to_str(current['vis_km']),
-                        'visibilityMiles': round_to_str(current['vis_miles']),
-                        'pressure': round_to_str(current['pressure_mb']),
-                        'pressureInches': round_to_str(current['pressure_in']),
-                        'cloudcover': round_to_str(current['cloud']),
-                        'FeelsLikeC': round_to_str(current['feelslike_c']),
-                        'FeelsLikeF': round_to_str(current['feelslike_f']),
-                        'uvIndex': round(current['uv'])
+                        'windspeedMiles': round_to_str(
+                            kph_to_miles(current['wind']['speed'])),
+                        'windspeedKmph': round_to_str(current['wind']['speed']),
+                        'winddirDegree': round_to_str(current['wind']['deg']),
+                        'winddir16Point': degree_to_wind_16_point_str(current['wind']['deg']),
+                        'precipMM': round_to_str(current['rain']['3h']),
+                        'precipInches': round_to_str(mm_to_inch(current['rain']['3h'])),
+                        'humidity': round_to_str(current['main']['humidity']),
+                        # not available
+                        'visibility': '0',
+                        # not available
+                        'visibilityMiles': '',
+                        'pressure': round_to_str(current['main']['grnd_level']),
+                        'pressureInches': round_to_str(
+                            h_pa_to_inches(current['main']['grnd_level'])),
+                        'cloudcover': round_to_str(current['clouds']['all']),
+                        'FeelsLikeC': round_to_str(current['main']['feelslike']),
+                        'FeelsLikeF': round_to_str(
+                            celsius_to_fahrenheit(current['main']['feelslike'])),
+                        # not available
+                        'uvIndex': 0
                     }
                 ],
                 'weather': self.to_weather_elements(),
@@ -148,6 +163,7 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
             }
         }
 
+# Hier weitermachen
     def to_weather_elements(self):
         source_dict = self.forecast_input_dictionary
         weather_elements = []
