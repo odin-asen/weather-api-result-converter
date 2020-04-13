@@ -1,4 +1,5 @@
 import json
+import dicttoxml
 from abc import abstractmethod
 
 from forecast_mapper.base_forecast_mapper import BaseForecastMapper
@@ -20,7 +21,8 @@ class BaseAPIForecast:
             return json.dumps(mapped_dictionary)
 
         if file_format == 'xml':
-            raise NotImplementedError('xml output is not implemented')
+            xml_bytes = dicttoxml.dicttoxml(mapped_dictionary, root=False)
+            return xml_bytes.decode('utf-8')
 
         raise NotImplementedError('Unknown output format {format} not implemented'
                                   .format(format=file_format))
