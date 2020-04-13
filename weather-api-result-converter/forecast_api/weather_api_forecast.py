@@ -18,9 +18,7 @@ class WeatherAPIForecast(BaseAPIForecast):
         if response.status_code == 200:
             return response.text
 
-        raise ValueError('Endpoint did not return OK, instead:\n{response}'.format(
-            response=response
-        ))
+        raise ValueError('Endpoint did not return OK, instead:', response, response.text)
 
     def make_forecast_url(self):
         return 'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={query}&days={days:d}'\

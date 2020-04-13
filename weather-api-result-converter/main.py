@@ -1,3 +1,4 @@
+import cgitb
 import cgi_parameters
 from forecast_api import weather_api_forecast, static_api_forecast
 from request_query_string_parser import RequestQueryStringParser
@@ -19,4 +20,5 @@ def main():
 
 
 # Start application
+cgitb.enable(logdir="/var/log/weather-api-result-converter/")
 main()
