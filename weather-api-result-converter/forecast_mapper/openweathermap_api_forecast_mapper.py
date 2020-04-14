@@ -22,39 +22,25 @@ def h_pa_to_inches(h_pa: float):
     return h_pa * 0.0295299830714447
 
 
-# noinspection Pylint
-def degree_to_wind_16_point_str(degree: float):
-    if degree >= 347.75 or degree < 12.25:
-        return 'N'
-    if 12.25 <= degree < 34.75:
-        return 'NNE'
-    if 34.75 <= degree < 57.25:
-        return 'NE'
-    if 57.25 <= degree < 79.75:
-        return 'ENE'
-    if 79.75 <= degree < 102.25:
-        return 'E'
-    if 102.25 <= degree < 124.75:
-        return 'ESE'
-    if 124.75 <= degree < 147.25:
-        return 'SE'
-    if 147.25 <= degree < 169.75:
-        return 'SSE'
-    if 169.75 <= degree < 192.25:
-        return 'S'
-    if 192.25 <= degree < 214.75:
-        return 'SSW'
-    if 214.75 <= degree < 237.25:
-        return 'SW'
-    if 237.25 <= degree < 259.75:
-        return 'WSW'
-    if 259.75 <= degree < 282.25:
-        return 'W'
-    if 282.25 <= degree < 304.75:
-        return 'WNW'
-    if 304.75 <= degree < 327.25:
-        return 'NW'
-    return 'NNW'
+def degree_to_wind_rose_str(degree: float):
+    values = [
+        'N', 'NNE', 'NE', 'ENE',
+        'E', 'ESE', 'SE', 'SSE',
+        'S', 'SSW', 'SW', 'WSW',
+        'W', 'WNW', 'NW', 'NNW'
+    ]
+    circle_span = 360.0
+    segment_span = circle_span / len(values)
+
+    half_segment_span = segment_span / 2
+    degree_integer_ratio = int(degree / circle_span)
+    normalized_degree = half_segment_span + degree - degree_integer_ratio * circle_span
+
+    segment_number = int(normalized_degree / segment_span)
+    if segment_number == len(values):
+        segment_number = 0
+
+    return values[segment_number]
 
 
 def forecast_day_to_weather_element(forecast_day: dict):
@@ -63,9 +49,9 @@ def forecast_day_to_weather_element(forecast_day: dict):
 
     # Could not test this part, because no premium API Key available for weatherapi.com
     hourly_elements = []
-#    if 'hour' in forecast_day:
-#        for forecast_day_hour in forecast_day['hour']:
-#            hourly_elements.append(forecast_day_hour_to_hourly_element(forecast_day_hour))
+    #    if 'hour' in forecast_day:
+    #        for forecast_day_hour in forecast_day['hour']:
+    #            hourly_elements.append(forecast_day_hour_to_hourly_element(forecast_day_hour))
 
     return {
         'date': forecast_day['date'],
@@ -137,7 +123,7 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                             kph_to_miles(current['wind']['speed'])),
                         'windspeedKmph': round_to_str(current['wind']['speed']),
                         'winddirDegree': round_to_str(current['wind']['deg']),
-                        'winddir16Point': degree_to_wind_16_point_str(current['wind']['deg']),
+                        'winddir16Point': degree_to_wind_rose_str(current['wind']['deg']),
                         'precipMM': round_to_str(current['rain']['3h']),
                         'precipInches': round_to_str(mm_to_inch(current['rain']['3h'])),
                         'humidity': round_to_str(current['main']['humidity']),
