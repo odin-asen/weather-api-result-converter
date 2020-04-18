@@ -4,9 +4,11 @@ from statistics import mean
 from forecast_mapper.base_forecast_mapper import \
     BaseForecastMapper, \
     round_to_str, \
-    unix_timestamp_to_world_weather_day_time
+    unix_timestamp_to_world_weather_day_time, \
+    unix_timestamp_to_world_weather_hourly_time
 from forecast_mapper.weather_stats import celsius_to_fahrenheit, kph_to_miles, mm_to_inch, h_pa_to_inches, \
-    degree_to_wind_rose_str, heat_index_celsius, heat_index_fahrenheit, dew_point_celsius, windchill_celsius
+    degree_to_wind_rose_str, heat_index_celsius, heat_index_fahrenheit, dew_point_celsius, \
+    windchill_celsius
 
 
 def forecast_main(dictionary: dict, key: str):
@@ -22,16 +24,28 @@ def total_snow_in_cm(forecast_list):
     return sum(map(lambda el: el['snow']['3h'], elements_with_snow)) / 10.0
 
 
-def total_sunshine(forecast_list):
-    day_hours = 3.0 * len(forecast_list)
-    # include sunset and sunrise,
-    # calculate time to sunset, return partial value
-    # after sunset, return 0
-    # before sunrise, return 0
-    # calculate time until sunrise, return partial value
-    avg_sunshine = mean(map(lambda el: el['clouds']['all'], forecast_list))
-    no_sunshine = day_hours * avg_sunshine / 100.0
-    return day_hours - no_sunshine
+def total_sunshine(forecast_list_for_one_day, sunrise: int, sunset: int):
+    hour_interval = 3.0
+    sunshine_hours = 0.0
+    for forecast in forecast_list_for_one_day:
+        time = forecast['dt']
+        cloud_influence = 100 - forecast['clouds']['all']
+        time_to_sunrise = sunrise - time
+        time_to_sunset = sunset - time
+        time_to_sunrise_in_hours = time_to_sunrise / 3600
+        time_to_sunset_in_hours = time_to_sunset / 3600
+
+        # it is full day
+        if time_to_sunrise_in_hours <= 0.0 and time_to_sunset_in_hours >= hour_interval:
+            sunshine_hours += hour_interval * cloud_influence / 100.0
+        # it is partly day in the morning
+        elif hour_interval > time_to_sunrise_in_hours > 0:
+            sunshine_hours += (hour_interval - time_to_sunrise_in_hours) * cloud_influence / 100.0
+        # it is partly day in the evening
+        elif hour_interval > time_to_sunset_in_hours > 0:
+            sunshine_hours += (hour_interval - time_to_sunset_in_hours) * cloud_influence / 100.0
+
+    return sunshine_hours
 
 
 def merge_dicts(dict1, dict2):
@@ -114,6 +128,8 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
 
     def to_weather_elements(self):
         source_dict = self.forecast_input_dictionary
+        sunrise = source_dict['city']['sunrise']
+        sunset = source_dict['city']['sunset']
         weather_elements = []
         # Group by day -> weather_element -> calc min, max, avg, cloudcover
         grouped_by_iso_day = {}
@@ -147,16 +163,20 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                 'avgtempC': round_to_str(day_temp_avg),
                 'avgtempF': round_to_str(celsius_to_fahrenheit(day_temp_avg)),
                 'totalSnow_cm': str(total_snow_in_cm(day_forecast_list)),
-                'sunHour': str(total_sunshine(day_forecast_list)),
+                'sunHour': str(total_sunshine(day_forecast_list, sunrise, sunset)),
                 # not provided
                 'uvIndex': '0',
                 'hourly': list(map(self.forecast_element_to_hourly_element, day_forecast_list))
             })
 
+            # update sunrise and sunset for next day
+            one_day_in_seconds = 24 * 60 * 60
+            sunrise += one_day_in_seconds
+            sunset += one_day_in_seconds
+
         return weather_elements
 
     def forecast_element_to_hourly_element(self, forecast_element: dict):
-        time_epoch = datetime.datetime.fromtimestamp(forecast_element['dt'])
         temp = forecast_main(forecast_element, 'temp')
         temp_f = celsius_to_fahrenheit(temp)
         relative_humidity = forecast_main(forecast_element, 'humidity')
@@ -168,15 +188,11 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
             # extra
             'tempC': round_to_str(temp),
             'tempF': round_to_str(celsius_to_fahrenheit(temp)),
-            'time': str(int(time_epoch.time().__format__("%I%M"))),
+            'time': unix_timestamp_to_world_weather_hourly_time(forecast_element['dt']),
             'HeatIndexC': round_to_str(heat_index_celsius(temp, relative_humidity)),
             'HeatIndexF': round_to_str(heat_index_fahrenheit(temp_f, relative_humidity)),
             'DewPointC': round_to_str(dew_point),
             'DewPointF': round_to_str(celsius_to_fahrenheit(dew_point)),
             'WindChillC': round_to_str(windchill),
             'WindChillF': round_to_str(celsius_to_fahrenheit(windchill))
-            # 'WindGustMiles': round_to_str(forecast_element['gust_mph']),
-            # 'WindGustKmph': round_to_str(forecast_element['gust_kph']),
-            # 'chanceofrain': round_to_str(forecast_element['chance_of_rain']),
-            # 'chanceofsnow': round_to_str(forecast_element['chance_of_snow'])
         })

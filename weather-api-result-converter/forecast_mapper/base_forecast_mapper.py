@@ -7,6 +7,10 @@ def round_to_str(value: float):
     return str(round(value))
 
 
+def unix_timestamp_to_world_weather_hourly_time(timestamp: float) -> str:
+    return str(int(datetime.datetime.fromtimestamp(timestamp).time().__format__("%H%M")))
+
+
 def unix_timestamp_to_world_weather_day_time(timestamp: float) -> str:
     return datetime.datetime.fromtimestamp(timestamp).time().__format__("%I:%M %p")
 
