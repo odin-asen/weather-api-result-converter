@@ -1,4 +1,5 @@
 import requests
+import json
 
 from forecast_api.base_api_forecast import BaseAPIForecast
 from forecast_mapper.base_forecast_mapper import BaseForecastMapper
@@ -25,12 +26,15 @@ class WeatherAPIForecast(BaseAPIForecast):
             if response.status_code == 200:
                 return response.text
 
-            raise ValueError('Endpoint did not return OK, instead:', response, response.text)
+            raise ValueError('Endpoint did not return OK, instead:', response, response.text, self.make_forecast_url())
 
     def make_forecast_url(self):
+#        return 'http://api.weatherapi.com/v1/forecast.json?key=43be7304c7404523b79191056200604&q=Singen&days=5'
+        with open('../keys.json', 'r') as keys_json:
+            api_key = json.loads(keys_json.read())['weather_api']
         return 'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={query}&days={days:d}'\
             .format(
-                api_key=self.query_string_parser.retrieve_api_key(),
+                api_key=api_key,
                 query=self.query_string_parser.retrieve_search_query(),
                 days=self.query_string_parser.retrieve_requested_days()
             )

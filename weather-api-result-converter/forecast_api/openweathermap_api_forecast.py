@@ -10,10 +10,12 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
     def __init__(self, query_string_parser: RequestQueryStringParser, use_static_file=False):
         super().__init__(query_string_parser)
         self.use_static_file = use_static_file
-        if not use_static_file:
-            if not query_string_parser.has_api_key() or not query_string_parser.has_search_query():
-                raise ValueError('Query string contains insufficient set of values. '
-                                 'OpenweathermapAPIForecast requires api key and search query')
+#        if not use_static_file:
+#            print(query_string_parser.retrieve_api_key())
+#            print(query_string_parser.retrieve_search_query())
+#            if not query_string_parser.has_api_key() and not query_string_parser.has_search_query():
+#                raise ValueError('Query string contains insufficient set of values. '
+#                                 'OpenweathermapAPIForecast requires api key and search query')
 
     def retrieve_json_string_from_endpoint(self):
         if self.use_static_file:
@@ -29,10 +31,11 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
 
     def make_forecast_url(self):
         url_base = 'http://api.openweathermap.org/data/2.5/forecast'
-        return url_base + '?APPID={api_key}&q={query},de&mode=json&units=metric'.format(
-            api_key=self.query_string_parser.retrieve_api_key(),
-            query=self.query_string_parser.retrieve_search_query()
+        url = url_base + '?appid={api_key}&q=Singen,de&mode=json&units=metric'.format(
+            api_key=self.query_string_parser.retrieve_api_key()
+ #           query=self.query_string_parser.retrieve_search_query()
         )
+        return url
 
     # noinspection Pylint
     def create_mapper(self, json_string) -> BaseForecastMapper:
