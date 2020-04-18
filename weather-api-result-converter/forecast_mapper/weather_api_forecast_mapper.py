@@ -8,9 +8,6 @@ def weather_api_to_world_weather_code(weather_api_code: int):
     return str(weather_api_code - 887)
 
 
-
-
-
 class WeatherAPIForecastMapper(BaseForecastMapper):
 
     def __init__(self, json_string):
@@ -46,7 +43,8 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                         'visibilityMiles': round_to_str(current['vis_miles']),
                         'pressure': round_to_str(current['pressure_mb']),
                         'pressureInches': round_to_str(current['pressure_in']),
-                        'cloudcover': round_to_str(current['cloud']),
+                        'cloud_cover': round_to_str(current['cloud']),
+                        'cloudCover': round_to_str(current['cloud']),
                         'FeelsLikeC': round_to_str(current['feelslike_c']),
                         'FeelsLikeF': round_to_str(current['feelslike_f']),
                         'uvIndex': round(current['uv'])
@@ -79,8 +77,10 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
             for forecast_day_hour in forecast_day['hour']:
                 hourly_elements.append(self.forecast_day_hour_to_hourly_element(forecast_day_hour))
 
+        date_array = forecast_day['date'].split("-")
         return {
-            'date': forecast_day['date'],
+            'date': date_array[2] + '.' + date_array[1] + '.' + date_array[0],
+            'weatherCode': '308',
             'astronomy': [
                 {
                     'sunrise': astro.get('sunrise', ''),

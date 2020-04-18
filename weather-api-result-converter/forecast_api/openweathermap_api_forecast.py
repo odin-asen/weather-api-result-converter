@@ -1,4 +1,5 @@
 import requests
+import json
 
 from forecast_api.base_api_forecast import BaseAPIForecast
 from forecast_mapper.base_forecast_mapper import BaseForecastMapper
@@ -10,12 +11,10 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
     def __init__(self, query_string_parser: RequestQueryStringParser, use_static_file=False):
         super().__init__(query_string_parser)
         self.use_static_file = use_static_file
-#        if not use_static_file:
-#            print(query_string_parser.retrieve_api_key())
-#            print(query_string_parser.retrieve_search_query())
-#            if not query_string_parser.has_api_key() and not query_string_parser.has_search_query():
-#                raise ValueError('Query string contains insufficient set of values. '
-#                                 'OpenweathermapAPIForecast requires api key and search query')
+        if not use_static_file:
+            if not query_string_parser.has_api_key() and not query_string_parser.has_search_query():
+                raise ValueError('Query string contains insufficient set of values. '
+                                 'OpenweathermapAPIForecast requires api key and search query')
 
     def retrieve_json_string_from_endpoint(self):
         if self.use_static_file:
@@ -31,11 +30,15 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
 
     def make_forecast_url(self):
         url_base = 'http://api.openweathermap.org/data/2.5/forecast'
-        url = url_base + '?appid={api_key}&q=Singen,de&mode=json&units=metric'.format(
-            api_key=self.query_string_parser.retrieve_api_key()
- #           query=self.query_string_parser.retrieve_search_query()
+        with open('../keys.json', 'r') as keys_json:
+            api_key = json.loads(keys_json.read())['openweathermap']
+        lat_lon = self.query_string_parser.retrieve_search_query().split(',', 2)
+        print(lat_lon)
+        return url_base + '?appid={api_key}&lat={lat}&lon={lon}&mode=json&units=metric'.format(
+            api_key=api_key,
+            lat=lat_lon[0],
+            lon=lat_lon[1]
         )
-        return url
 
     # noinspection Pylint
     def create_mapper(self, json_string) -> BaseForecastMapper:
