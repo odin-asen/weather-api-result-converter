@@ -37,17 +37,11 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                         'winddirDegree': round_to_str(current['wind_degree']),
                         'winddir16Point': current['wind_dir'],
                         'precipMM': str(current['precip_mm']),
-                        'precipInches': str(current['precip_in']),
                         'humidity': round_to_str(current['humidity']),
                         'visibility': round_to_str(current['vis_km']),
-                        'visibilityMiles': round_to_str(current['vis_miles']),
                         'pressure': round_to_str(current['pressure_mb']),
-                        'pressureInches': round_to_str(current['pressure_in']),
-                        'cloud_cover': round_to_str(current['cloud']),
-                        'cloudCover': round_to_str(current['cloud']),
-                        'FeelsLikeC': round_to_str(current['feelslike_c']),
-                        'FeelsLikeF': round_to_str(current['feelslike_f']),
-                        'uvIndex': round(current['uv'])
+                        'cloudcover': round_to_str(current['cloud']),
+                        'FeelsLikeC': round_to_str(current['feelslike_c'])
                     }
                 ],
                 'weather': self.to_weather_elements(),
@@ -71,6 +65,11 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
         day = forecast_day['day']
         astro = forecast_day['astro']
 
+        corresponding_code = day['condition']['code']
+        weather_code = self.world_weather_code_by_corresponding_code(corresponding_code)
+        weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
+        weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
+
         # Could not test this part, because no premium API Key available for weatherapi.com
         hourly_elements = []
         if 'hour' in forecast_day:
@@ -80,7 +79,6 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
         date_array = forecast_day['date'].split("-")
         return {
             'date': date_array[2] + '.' + date_array[1] + '.' + date_array[0],
-            'weatherCode': '308',
             'astronomy': [
                 {
                     'sunrise': astro.get('sunrise', ''),
@@ -91,18 +89,17 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                     'moon_illumination': astro.get('moon_illumination', '')
                 }
             ],
-            'maxtempC': round_to_str(day['maxtemp_c']),
-            'maxtempF': round_to_str(day['maxtemp_f']),
-            'mintempC': round_to_str(day['mintemp_c']),
-            'mintempF': round_to_str(day['mintemp_f']),
-            'avgtempC': round_to_str(day['avgtemp_c']),
-            'avgtempF': round_to_str(day['avgtemp_f']),
+            'weatherCode': weather_code,
+            'weatherIconUrl': [{'value': weather_icon}],
+            'weatherDesc': [{'value': weather_condition}],
+            'tempMaxC': round_to_str(day['maxtemp_c']),
+            'tempMinC': round_to_str(day['mintemp_c']),
+            'tempAvgC': round_to_str(day['avgtemp_c']),
             # not available in Weather-API
             'totalSnow_cm': "0.0",
             # not available in Weather-API
             'sunHour': "0.0",
-            'uvIndex': round_to_str(day['uv']),
-            'hourly': hourly_elements
+            'uvIndex': round_to_str(day['uv'])
         }
 
     def forecast_day_hour_to_hourly_element(self, forecast_day_hour: dict):
