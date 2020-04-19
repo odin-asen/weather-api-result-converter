@@ -27,7 +27,7 @@ class BaseAPIForecast:
 
         file_format = self.query_string_parser.retrieve_file_format()
         if file_format == 'json':
-            return json.dumps(mapped_dictionary, indent=4)
+            return json.dumps(mapped_dictionary, indent=4, ensure_ascii=False)
 
         if file_format == 'xml':
             xml_bytes = dicttoxml.dicttoxml(mapped_dictionary, root=False)

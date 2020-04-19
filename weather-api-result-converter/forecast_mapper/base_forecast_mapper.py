@@ -43,11 +43,12 @@ class BaseForecastMapper:
         self.language_code = mapping_config['language_code']
 
         self.corresponding_code_key = ''
-        with open(make_resources_path() + 'condition-map.json', 'r') as conditions_map_json_file:
+        with open(make_resources_path() + 'condition-map.json', 'r', encoding='utf-8') \
+                as conditions_map_json_file:
             self.conditions_mappings = json.loads(conditions_map_json_file.read())
 
         translations_path = make_resources_path() + 'mapping-translations.json'
-        with open(translations_path, 'r') as translations_json_file:
+        with open(translations_path, 'r', encoding='utf-8') as translations_json_file:
             self.mapping_translations = json.loads(translations_json_file.read())
 
     @abstractmethod
