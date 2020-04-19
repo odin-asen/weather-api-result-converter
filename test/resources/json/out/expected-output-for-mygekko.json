@@ -12,7 +12,7 @@
         ],
         "weatherDesc": [
           {
-            "value": "Clear/Sunny"
+            "value": "Sonnig/Klar"
           }
         ],
         "windspeedKmph": "6",
@@ -36,7 +36,7 @@
         ],
         "weatherDesc": [
           {
-            "value": "Partly Cloudy"
+            "value": "Leicht bewoelkt"
           }
         ],
         "tempMaxC": "21",
@@ -55,7 +55,7 @@
         ],
         "weatherDesc": [
           {
-            "value": "Partly Cloudy"
+            "value": "Leicht bewoelkt"
           }
         ],
         "tempMaxC": "20",
@@ -74,7 +74,7 @@
         ],
         "weatherDesc": [
           {
-            "value": "Partly Cloudy"
+            "value": "Leicht bewoelkt"
           }
         ],
         "tempMaxC": "20",
@@ -93,7 +93,7 @@
         ],
         "weatherDesc": [
           {
-            "value": "Partly Cloudy"
+            "value": "Leicht bewoelkt"
           }
         ],
         "tempMaxC": "22",
@@ -112,7 +112,7 @@
         ],
         "weatherDesc": [
           {
-            "value": "Partly Cloudy"
+            "value": "Leicht bewoelkt"
           }
         ],
         "tempMaxC": "20",

@@ -67,4 +67,4 @@ class BaseForecastMapper:
 
     def get_condition_by_corresponding_code(self, corresponding_code):
         mapping = self.get_mapping_by_corresponding_code(corresponding_code)
-        return mapping['description']['en']
+        return mapping['description']['de']
