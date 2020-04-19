@@ -28,11 +28,9 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                     {
                         'observation_time': last_updated.time().__format__("%I:%M %p"),
                         'temp_C': round_to_str(current['temp_c']),
-                        'temp_F': round_to_str(current['temp_f']),
                         'weatherCode': weather_code,
                         'weatherIconUrl': [{'value': weather_icon}],
                         'weatherDesc': [{'value': weather_condition}],
-                        'windspeedMiles': round_to_str(current['wind_mph']),
                         'windspeedKmph': round_to_str(current['wind_kph']),
                         'winddirDegree': round_to_str(current['wind_degree']),
                         'winddir16Point': current['wind_dir'],
@@ -40,14 +38,10 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                         'humidity': round_to_str(current['humidity']),
                         'visibility': round_to_str(current['vis_km']),
                         'pressure': round_to_str(current['pressure_mb']),
-                        'cloudcover': round_to_str(current['cloud']),
-                        'FeelsLikeC': round_to_str(current['feelslike_c'])
+                        'cloudcover': round_to_str(current['cloud'])
                     }
                 ],
-                'weather': self.to_weather_elements(),
-                'ClimateAverages': [
-                    # does not exist on Weather-API
-                ]
+                'weather': self.to_weather_elements()
             }
         }
 
@@ -76,30 +70,17 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
             for forecast_day_hour in forecast_day['hour']:
                 hourly_elements.append(self.forecast_day_hour_to_hourly_element(forecast_day_hour))
 
-        date_array = forecast_day['date'].split("-")
         return {
-            'date': date_array[2] + '.' + date_array[1] + '.' + date_array[0],
-            'astronomy': [
-                {
-                    'sunrise': astro.get('sunrise', ''),
-                    'sunset': astro.get('sunset', ''),
-                    'moonrise': astro.get('moonrise', ''),
-                    'moonset': astro.get('moonset', ''),
-                    'moon_phase': astro.get('moon_phase', ''),
-                    'moon_illumination': astro.get('moon_illumination', '')
-                }
-            ],
+            'date': forecast_day['date'],
             'weatherCode': weather_code,
             'weatherIconUrl': [{'value': weather_icon}],
             'weatherDesc': [{'value': weather_condition}],
             'tempMaxC': round_to_str(day['maxtemp_c']),
             'tempMinC': round_to_str(day['mintemp_c']),
-            'tempAvgC': round_to_str(day['avgtemp_c']),
-            # not available in Weather-API
-            'totalSnow_cm': "0.0",
-            # not available in Weather-API
-            'sunHour': "0.0",
-            'uvIndex': round_to_str(day['uv'])
+            'windspeedKmph': str(day['maxwind_kph']),
+            'precipMM': str(day['totalprecip_mm']),
+            # not available in Weather-API, but maybe needed by MyGekko
+            'totalSnow_cm': "0.0"
         }
 
     def forecast_day_hour_to_hourly_element(self, forecast_day_hour: dict):
@@ -110,7 +91,6 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
         return {
             'time': unix_timestamp_to_world_weather_hourly_time(forecast_day_hour['time_epoch']),
             'tempC': round_to_str(forecast_day_hour['temp_c']),
-            'tempF': round_to_str(forecast_day_hour['temp_f']),
             'windspeedMiles': round_to_str(forecast_day_hour['wind_mph']),
             'windspeedKmph': round_to_str(forecast_day_hour['wind_kph']),
             'winddirDegree': round_to_str(forecast_day_hour['wind_degree']),

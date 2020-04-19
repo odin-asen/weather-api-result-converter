@@ -29,6 +29,6 @@ def main():
 
 
 # Start application
-cgitb.enable(logdir="/var/log/weather-api-result-converter/")
+cgitb.enable(logdir="/var/log/json-result-converter/")
 main()
 #mock()

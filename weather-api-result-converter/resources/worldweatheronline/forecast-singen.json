@@ -1300,8 +1300,10 @@
             "moon_illumination": "68"
           }
         ],
+        "tempMaxC": "22",
         "maxtempC": "22",
         "maxtempF": "72",
+        "tempMinC": "7",
         "mintempC": "7",
         "mintempF": "44",
         "avgtempC": "15",

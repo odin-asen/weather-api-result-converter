@@ -18,7 +18,7 @@ class WeatherAPIForecast(BaseAPIForecast):
 
     def retrieve_json_string_from_endpoint(self):
         if self.use_static_file:
-            static_file_path = 'resources/weather-api/forecast-singen.json'
+            static_file_path = 'resources/json/weather-api-forecast.json'
             with open(static_file_path, 'r') as forecast_json_file:
                 return forecast_json_file.read()
         else:
@@ -29,7 +29,6 @@ class WeatherAPIForecast(BaseAPIForecast):
             raise ValueError('Endpoint did not return OK, instead:', response, response.text, self.make_forecast_url())
 
     def make_forecast_url(self):
-#        return 'http://api.weatherapi.com/v1/forecast.json?key=43be7304c7404523b79191056200604&q=Singen&days=5'
         with open('../keys.json', 'r') as keys_json:
             api_key = json.loads(keys_json.read())['weather_api']
         return 'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={query}&days={days:d}'\

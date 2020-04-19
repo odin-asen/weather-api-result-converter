@@ -1,5 +1,6 @@
 import json
 import datetime
+import os
 from abc import abstractmethod
 
 
@@ -17,14 +18,19 @@ def unix_timestamp_to_world_weather_day_time(timestamp: float) -> str:
     return datetime.datetime.fromtimestamp(timestamp).time().__format__("%I:%M %p")
 
 
-# noinspection Pylint
+def make_resources_path():
+    mapping_file_path = '../resources/'
+
+    dirname = os.path.dirname(__file__)
+    return os.path.join(dirname, mapping_file_path)
+
+
 class BaseForecastMapper:
     def __init__(self, json_string):
         self.forecast_input_dictionary = json.loads(json_string)
 
         self.corresponding_code_key = ''
-        mapping_file_path = 'resources/condition-map.json'
-        with open(mapping_file_path, 'r') as conditions_map_json_file:
+        with open(make_resources_path() + 'condition-map.json', 'r') as conditions_map_json_file:
             self.conditions_mappings = json.loads(conditions_map_json_file.read())
 
     @abstractmethod
@@ -32,7 +38,7 @@ class BaseForecastMapper:
         pass
 
     def world_weather_code_by_corresponding_code(self, corresponding_code):
-        return self.get_mapping_by_corresponding_code(corresponding_code)['code']
+        return str(self.get_mapping_by_corresponding_code(corresponding_code)['code'])
 
     def get_mapping_by_corresponding_code(self, corresponding_code):
         if self.corresponding_code_key == '':
