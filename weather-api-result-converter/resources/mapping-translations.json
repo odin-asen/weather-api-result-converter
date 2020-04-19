@@ -1,0 +1,68 @@
+{
+  "wind_dir": {
+    "N": {
+      "en": "North",
+      "de": "Nord"
+    },
+    "NNE": {
+      "en": "North-NE",
+      "de": "Nord-NO"
+    },
+    "NE": {
+      "en": "North-East",
+      "de": "Nordost"
+    },
+    "ENE": {
+      "en": "East-NE",
+      "de": "Ost-NO"
+    },
+    "E": {
+      "en": "East",
+      "de": "Ost"
+    },
+    "ESE": {
+      "en": "East-SE",
+      "de": "Ost-SO"
+    },
+    "SE": {
+      "en": "South-East",
+      "de": "Südost"
+    },
+    "SSE": {
+      "en": "South-SE",
+      "de": "Süd-SO"
+    },
+    "S": {
+      "en": "South",
+      "de": "Süd"
+    },
+    "SSW": {
+      "en": "South-SW",
+      "de": "Süd-SW"
+    },
+    "SW": {
+      "en": "South-West",
+      "de": "Südwest"
+    },
+    "WSW": {
+      "en": "West-SW",
+      "de": "West-SW"
+    },
+    "W": {
+      "en": "West",
+      "de": "West"
+    },
+    "WNW": {
+      "en": "West-NW",
+      "de": "West-NW"
+    },
+    "NW": {
+      "en": "North-West",
+      "de": "Nordwest"
+    },
+    "NNW": {
+      "en": "North-NW",
+      "de": "Nord-NW"
+    }
+  }
+}

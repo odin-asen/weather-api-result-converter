@@ -1,6 +1,7 @@
-import json
 import datetime
+import json
 import os
+import os.path
 from abc import abstractmethod
 
 
@@ -25,13 +26,29 @@ def make_resources_path():
     return os.path.join(dirname, mapping_file_path)
 
 
+def load_mapping_config_or_default():
+    if os.path.isfile('../config.json'):
+        with open('../config.json', 'r') as config_json:
+            return json.loads(config_json.read())
+    else:
+        return {
+            'language_code': 'en'
+        }
+
+
 class BaseForecastMapper:
     def __init__(self, json_string):
         self.forecast_input_dictionary = json.loads(json_string)
+        mapping_config = load_mapping_config_or_default()
+        self.language_code = mapping_config['language_code']
 
         self.corresponding_code_key = ''
         with open(make_resources_path() + 'condition-map.json', 'r') as conditions_map_json_file:
             self.conditions_mappings = json.loads(conditions_map_json_file.read())
+
+        translations_path = make_resources_path() + 'mapping-translations.json'
+        with open(translations_path, 'r') as translations_json_file:
+            self.mapping_translations = json.loads(translations_json_file.read())
 
     @abstractmethod
     def to_output_dictionary(self):
@@ -65,6 +82,9 @@ class BaseForecastMapper:
         return 'http://cdn.worldweatheronline.net/images/wsymbols01_png_64/{symbol}.png'\
             .format(symbol=mapping['symbol'][day_symbol])
 
+    def translate_16_points_wind_direction(self, short_code):
+        return self.mapping_translations['wind_dir'][short_code][self.language_code]
+
     def get_condition_by_corresponding_code(self, corresponding_code):
         mapping = self.get_mapping_by_corresponding_code(corresponding_code)
-        return mapping['description']['de']
+        return mapping['description'][self.language_code]

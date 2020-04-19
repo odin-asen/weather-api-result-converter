@@ -22,6 +22,7 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
         is_day = current['is_day'] != 0
         weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code, is_day)
         weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
+        wind_dir = self.translate_16_points_wind_direction(current['wind_dir'])
         mapped = {
             'data': {
                 'current_condition': [
@@ -33,7 +34,7 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                         'weatherDesc': [{'value': weather_condition}],
                         'windspeedKmph': round_to_str(current['wind_kph']),
                         'winddirDegree': round_to_str(current['wind_degree']),
-                        'winddir16Point': current['wind_dir'],
+                        'winddir16Point': wind_dir,
                         'precipMM': str(current['precip_mm']),
                         'humidity': round_to_str(current['humidity']),
                         'visibility': round_to_str(current['vis_km']),
@@ -41,28 +42,27 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
                         'cloudcover': round_to_str(current['cloud'])
                     }
                 ],
-                'weather': self.to_weather_elements()
+                'weather': self.to_weather_elements(wind_dir)
             }
         }
 
         return mapped
 
-    def to_weather_elements(self):
+    def to_weather_elements(self, wind_dir):
         source_dict = self.forecast_input_dictionary
         weather_elements = []
         for forecast_day in source_dict['forecast']['forecastday']:
-            weather_elements.append(self.forecast_day_to_weather_element(forecast_day))
+            weather_elements.append(self.forecast_day_to_weather_element(forecast_day, wind_dir))
 
         return weather_elements
 
-    def forecast_day_to_weather_element(self, forecast_day: dict):
+    def forecast_day_to_weather_element(self, forecast_day: dict, wind_dir: str):
         day = forecast_day['day']
 
         corresponding_code = day['condition']['code']
         weather_code = self.world_weather_code_by_corresponding_code(corresponding_code)
         weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
         weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
-
         return {
             'date': forecast_day['date'],
             'weatherCode': weather_code,
@@ -73,5 +73,7 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
             'windspeedKmph': str(day['maxwind_kph']),
             'precipMM': str(day['totalprecip_mm']),
             # not available in Weather-API, but maybe needed by MyGekko
-            'totalSnow_cm': "0.0"
+            'totalSnow_cm': "0.0",
+            # not provided with free api key
+            'hourly': [{'time': '0', 'winddir16Point': wind_dir}],
         }
