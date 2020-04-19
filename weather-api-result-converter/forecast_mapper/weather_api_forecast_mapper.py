@@ -1,7 +1,6 @@
 import datetime
 
-from forecast_mapper.base_forecast_mapper import BaseForecastMapper, round_to_str, \
-    unix_timestamp_to_world_weather_hourly_time
+from forecast_mapper.base_forecast_mapper import BaseForecastMapper, round_to_str
 
 
 def weather_api_to_world_weather_code(weather_api_code: int):
@@ -57,18 +56,11 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
 
     def forecast_day_to_weather_element(self, forecast_day: dict):
         day = forecast_day['day']
-        astro = forecast_day['astro']
 
         corresponding_code = day['condition']['code']
         weather_code = self.world_weather_code_by_corresponding_code(corresponding_code)
         weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
         weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
-
-        # Could not test this part, because no premium API Key available for weatherapi.com
-        hourly_elements = []
-        if 'hour' in forecast_day:
-            for forecast_day_hour in forecast_day['hour']:
-                hourly_elements.append(self.forecast_day_hour_to_hourly_element(forecast_day_hour))
 
         return {
             'date': forecast_day['date'],
@@ -81,41 +73,4 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
             'precipMM': str(day['totalprecip_mm']),
             # not available in Weather-API, but maybe needed by MyGekko
             'totalSnow_cm': "0.0"
-        }
-
-    def forecast_day_hour_to_hourly_element(self, forecast_day_hour: dict):
-        corresponding_code = forecast_day_hour['condition']['code']
-        weather_code = self.world_weather_code_by_corresponding_code(corresponding_code)
-        weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
-        weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
-        return {
-            'time': unix_timestamp_to_world_weather_hourly_time(forecast_day_hour['time_epoch']),
-            'tempC': round_to_str(forecast_day_hour['temp_c']),
-            'windspeedMiles': round_to_str(forecast_day_hour['wind_mph']),
-            'windspeedKmph': round_to_str(forecast_day_hour['wind_kph']),
-            'winddirDegree': round_to_str(forecast_day_hour['wind_degree']),
-            'winddir16Point': forecast_day_hour['wind_dir'],
-            'weatherCode': weather_code,
-            'weatherIconUrl': [{'value': weather_icon}],
-            'weatherDesc': [{'value': weather_condition}],
-            'precipMM': str(forecast_day_hour['precip_mm']),
-            'precipInches': str(forecast_day_hour['precip_in']),
-            'humidity': round_to_str(forecast_day_hour['humidity']),
-            'visibility': round_to_str(forecast_day_hour['vis_km']),
-            'visibilityMiles': round_to_str(forecast_day_hour['vis_miles']),
-            'pressure': round_to_str(forecast_day_hour['pressure_mb']),
-            'pressureInches': round_to_str(forecast_day_hour['pressure_in']),
-            'cloudcover': round_to_str(forecast_day_hour['cloud']),
-            'HeatIndexC': round_to_str(forecast_day_hour['heatindex_c']),
-            'HeatIndexF': round_to_str(forecast_day_hour['heatindex_f']),
-            'DewPointC': round_to_str(forecast_day_hour['dewpoint_c']),
-            'DewPointF': round_to_str(forecast_day_hour['dewpoint_f']),
-            'WindChillC': round_to_str(forecast_day_hour['windchill_c']),
-            'WindChillF': round_to_str(forecast_day_hour['windchill_f']),
-            'WindGustMiles': round_to_str(forecast_day_hour['gust_mph']),
-            'WindGustKmph': round_to_str(forecast_day_hour['gust_kph']),
-            'FeelsLikeC': round_to_str(forecast_day_hour['feelslike_c']),
-            'FeelsLikeF': round_to_str(forecast_day_hour['feelslike_f']),
-            'chanceofrain': round_to_str(forecast_day_hour['chance_of_rain']),
-            'chanceofsnow': round_to_str(forecast_day_hour['chance_of_snow'])
         }
