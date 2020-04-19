@@ -1,4 +1,5 @@
 import requests
+import json
 
 from forecast_api.base_api_forecast import BaseAPIForecast
 from forecast_mapper.base_forecast_mapper import BaseForecastMapper
@@ -17,7 +18,7 @@ class WeatherAPIForecast(BaseAPIForecast):
 
     def retrieve_json_string_from_endpoint(self):
         if self.use_static_file:
-            static_file_path = 'resources/weather-api/forecast-singen.json'
+            static_file_path = 'resources/json/weather-api-forecast.json'
             with open(static_file_path, 'r') as forecast_json_file:
                 return forecast_json_file.read()
         else:
@@ -25,12 +26,14 @@ class WeatherAPIForecast(BaseAPIForecast):
             if response.status_code == 200:
                 return response.text
 
-            raise ValueError('Endpoint did not return OK, instead:', response, response.text)
+            raise ValueError('Endpoint did not return OK, instead:', response, response.text, self.make_forecast_url())
 
     def make_forecast_url(self):
+        with open('../keys.json', 'r') as keys_json:
+            api_key = json.loads(keys_json.read())['weather_api']
         return 'http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={query}&days={days:d}'\
             .format(
-                api_key=self.query_string_parser.retrieve_api_key(),
+                api_key=api_key,
                 query=self.query_string_parser.retrieve_search_query(),
                 days=self.query_string_parser.retrieve_requested_days()
             )

@@ -1,0 +1,279 @@
+{
+  "location": {
+    "name": "Singen",
+    "region": "Baden-Wurttemberg",
+    "country": "Germany",
+    "lat": 47.77,
+    "lon": 8.83,
+    "tz_id": "Europe/Berlin",
+    "localtime_epoch": 1586301875,
+    "localtime": "2020-04-08 1:24"
+  },
+  "current": {
+    "last_updated_epoch": 1586301322,
+    "last_updated": "2020-04-08 01:15",
+    "temp_c": 9.0,
+    "temp_f": 48.2,
+    "is_day": 0,
+    "condition": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+      "code": 1000
+    },
+    "wind_mph": 3.8,
+    "wind_kph": 6.1,
+    "wind_degree": 110,
+    "wind_dir": "ESE",
+    "pressure_mb": 1026.0,
+    "pressure_in": 30.8,
+    "precip_mm": 0.3,
+    "precip_in": 0.0,
+    "humidity": 62,
+    "cloud": 4,
+    "feelslike_c": 8.3,
+    "feelslike_f": 46.9,
+    "vis_km": 10.0,
+    "vis_miles": 6.0,
+    "uv": 0.0,
+    "gust_mph": 6.9,
+    "gust_kph": 11.2
+  },
+  "forecast": {
+    "forecastday": [
+      {
+        "date": "2020-04-08",
+        "date_epoch": 1586304000,
+        "day": {
+          "maxtemp_c": 21.2,
+          "maxtemp_f": 70.2,
+          "mintemp_c": 6.7,
+          "mintemp_f": 44.1,
+          "avgtemp_c": 14.0,
+          "avgtemp_f": 57.2,
+          "maxwind_mph": 3.4,
+          "maxwind_kph": 5.4,
+          "totalprecip_mm": 11.5,
+          "totalprecip_in": 0.0,
+          "avgvis_km": 10.0,
+          "avgvis_miles": 6.0,
+          "avghumidity": 71.0,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+            "code": 1003
+          },
+          "uv": 4.8
+        },
+        "astro": {
+          "sunrise": "06:49 AM",
+          "sunset": "08:05 PM",
+          "moonrise": "08:40 PM",
+          "moonset": "07:23 AM"
+        },
+        "hour": [
+          {
+            "time_epoch": 1586304000,
+            "time": "2020-04-08 06:00 AM",
+            "temp_c": 9.0,
+            "temp_f": 48.2,
+            "is_day": 0,
+            "condition": {
+              "text": "Clear",
+              "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+              "code": 1000
+            },
+            "wind_mph": 3.8,
+            "wind_kph": 6.1,
+            "wind_degree": 110,
+            "wind_dir": "ESE",
+            "pressure_mb": 1026.0,
+            "pressure_in": 30.8,
+            "precip_mm": 0.0,
+            "precip_in": 0.0,
+            "humidity": 62,
+            "cloud": 0,
+            "feelslike_c": 8.3,
+            "feelslike_f": 46.9,
+            "vis_km": 10.0,
+            "vis_miles": 6.0,
+            "gust_mph": 6.9,
+            "gust_kph": 11.2,
+            "windchill_c": 6.0,
+            "windchill_f": 40.8,
+            "heatindex_c": 9.0,
+            "heatindex_f": 48.6,
+            "dewpoint_c": 3.0,
+            "dewpoint_f": 38.0,
+            "will_it_rain": 0,
+            "will_it_snow": 0,
+            "chance_of_rain": 10,
+            "chance_of_snow": 0
+          },
+          {
+            "time_epoch": 1586304000,
+            "time": "2020-04-08 09:00 AM",
+            "temp_c": 9.0,
+            "temp_f": 48.2,
+            "is_day": 0,
+            "condition": {
+              "text": "Clear",
+              "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+              "code": 1000
+            },
+            "wind_mph": 3.8,
+            "wind_kph": 6.1,
+            "wind_degree": 110,
+            "wind_dir": "ESE",
+            "pressure_mb": 1026.0,
+            "pressure_in": 30.8,
+            "precip_mm": 0.0,
+            "precip_in": 0.0,
+            "humidity": 62,
+            "cloud": 0,
+            "feelslike_c": 8.3,
+            "feelslike_f": 46.9,
+            "vis_km": 10.0,
+            "vis_miles": 6.0,
+            "gust_mph": 6.9,
+            "gust_kph": 11.2,
+            "windchill_c": 6.0,
+            "windchill_f": 40.8,
+            "heatindex_c": 9.0,
+            "heatindex_f": 48.6,
+            "dewpoint_c": 3.0,
+            "dewpoint_f": 38.0,
+            "will_it_rain": 0,
+            "will_it_snow": 0,
+            "chance_of_rain": 10,
+            "chance_of_snow": 0
+          }
+        ]
+      },
+      {
+        "date": "2020-04-09",
+        "date_epoch": 1586390400,
+        "day": {
+          "maxtemp_c": 19.9,
+          "maxtemp_f": 67.8,
+          "mintemp_c": 6.0,
+          "mintemp_f": 42.8,
+          "avgtemp_c": 13.3,
+          "avgtemp_f": 56.0,
+          "maxwind_mph": 7.8,
+          "maxwind_kph": 12.6,
+          "totalprecip_mm": 0.0,
+          "totalprecip_in": 0.0,
+          "avgvis_km": 10.0,
+          "avgvis_miles": 6.0,
+          "avghumidity": 70.0,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+            "code": 1003
+          },
+          "uv": 5.0
+        },
+        "astro": {
+          "sunrise": "06:47 AM",
+          "sunset": "08:06 PM",
+          "moonrise": "10:03 PM",
+          "moonset": "07:50 AM"
+        }
+      },
+      {
+        "date": "2020-04-10",
+        "date_epoch": 1586476800,
+        "day": {
+          "maxtemp_c": 19.5,
+          "maxtemp_f": 67.1,
+          "mintemp_c": 6.0,
+          "mintemp_f": 42.8,
+          "avgtemp_c": 13.5,
+          "avgtemp_f": 56.3,
+          "maxwind_mph": 6.7,
+          "maxwind_kph": 10.8,
+          "totalprecip_mm": 0.0,
+          "totalprecip_in": 0.0,
+          "avgvis_km": 10.0,
+          "avgvis_miles": 6.0,
+          "avghumidity": 69.0,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+            "code": 1003
+          },
+          "uv": 5.9
+        },
+        "astro": {
+          "sunrise": "06:45 AM",
+          "sunset": "08:08 PM",
+          "moonrise": "11:25 PM",
+          "moonset": "08:18 AM"
+        }
+      },
+      {
+        "date": "2020-04-11",
+        "date_epoch": 1586563200,
+        "day": {
+          "maxtemp_c": 22.0,
+          "maxtemp_f": 71.6,
+          "mintemp_c": 6.7,
+          "mintemp_f": 44.1,
+          "avgtemp_c": 14.5,
+          "avgtemp_f": 58.1,
+          "maxwind_mph": 3.1,
+          "maxwind_kph": 5.0,
+          "totalprecip_mm": 0.1,
+          "totalprecip_in": 0.0,
+          "avgvis_km": 9.0,
+          "avgvis_miles": 5.0,
+          "avghumidity": 73.0,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+            "code": 1003
+          },
+          "uv": 5.5
+        },
+        "astro": {
+          "sunrise": "06:43 AM",
+          "sunset": "08:09 PM",
+          "moonrise": "No moonrise",
+          "moonset": "08:52 AM"
+        }
+      },
+      {
+        "date": "2020-04-12",
+        "date_epoch": 1586649600,
+        "day": {
+          "maxtemp_c": 20.0,
+          "maxtemp_f": 68.0,
+          "mintemp_c": 6.6,
+          "mintemp_f": 43.9,
+          "avgtemp_c": 13.4,
+          "avgtemp_f": 56.2,
+          "maxwind_mph": 7.4,
+          "maxwind_kph": 11.9,
+          "totalprecip_mm": 0.1,
+          "totalprecip_in": 0.0,
+          "avgvis_km": 9.0,
+          "avgvis_miles": 5.0,
+          "avghumidity": 69.0,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+            "code": 1003
+          },
+          "uv": 4.0
+        },
+        "astro": {
+          "sunrise": "06:41 AM",
+          "sunset": "08:11 PM",
+          "moonrise": "12:42 AM",
+          "moonset": "09:33 AM"
+        }
+      }
+    ]
+  },
+  "alert": {}
+}

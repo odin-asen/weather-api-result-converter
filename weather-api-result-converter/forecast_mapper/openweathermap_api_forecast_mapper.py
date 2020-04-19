@@ -69,15 +69,15 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                 'current_condition': [
                     # not yet provided with current implementation
                     # just taking the first element of list as current
-                    merge_dicts(self.forecast_base_elements(current), {
+                    merge_dicts({
                         # extra
-                        'temp_C': round_to_str(temp_c),
-                        'temp_F': round_to_str(celsius_to_fahrenheit(temp_c)),
                         'observation_time':
                             unix_timestamp_to_world_weather_day_time(current_timestamp),
+                        'temp_C': round_to_str(temp_c),
+                        'temp_F': round_to_str(celsius_to_fahrenheit(temp_c)),
                         # not provided
                         'uvIndex': 0
-                    })
+                    }, self.forecast_base_elements(current))
                 ],
                 'weather': self.to_weather_elements(),
                 'ClimateAverages': [
@@ -101,23 +101,23 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
         temp_feelslike = forecast_main(forecast_element, 'feels_like')
 
         return {
-            'windspeedKmph': round_to_str(wind_speed),
-            'windspeedMiles': round_to_str(kph_to_miles(wind_speed)),
-            'winddirDegree': round_to_str(wind_direction),
-            'winddir16Point': degree_to_wind_rose_str(wind_direction),
-
-            'weatherCode': weather_code,
+            'weatherCode': str(weather_code),
             'weatherIconUrl': [{'value': weather_icon}],
             'weatherDesc': [{'value': weather_condition}],
+
+            'windspeedMiles': round_to_str(kph_to_miles(wind_speed)),
+            'windspeedKmph': round_to_str(wind_speed),
+            'winddirDegree': round_to_str(wind_direction),
+            'winddir16Point': degree_to_wind_rose_str(wind_direction),
 
             'precipMM': round_to_str(precipitation_mm),
             'precipInches': round_to_str(mm_to_inch(precipitation_mm)),
             'humidity': round_to_str(forecast_main(forecast_element, 'humidity')),
 
             # not provided
-            'visibility': '0',
+            'visibility': 'not provided',
             # not provided
-            'visibilityMiles': '0',
+            'visibilityMiles': 'not provided',
 
             'pressure': round_to_str(pressure_h_pa),
             'pressureInches': round_to_str(h_pa_to_inches(pressure_h_pa)),
@@ -146,16 +146,16 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
             weather_elements.append({
                 'date': iso_day,
                 # not provided
-                'astronomy': [
-                    {
-                        'sunrise': '',
-                        'sunset': '',
-                        'moonrise': '',
-                        'moonset': '',
-                        'moon_phase': '',
-                        'moon_illumination': '',
-                    }
-                ],
+                #'astronomy': [
+                #    {
+                #        'sunrise': '',
+                #        'sunset': '',
+                #        'moonrise': '',
+                #        'moonset': '',
+                #        'moon_phase': '',
+                #        'moon_illumination': '',
+                #    }
+                #],
                 'maxtempC': round_to_str(day_temp_max),
                 'maxtempF': round_to_str(celsius_to_fahrenheit(day_temp_max)),
                 'mintempC': round_to_str(day_temp_min),
@@ -184,15 +184,15 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
         wind_speed = forecast_element['wind']['speed']
         windchill = windchill_celsius(temp, wind_speed)
 
-        return merge_dicts(self.forecast_base_elements(forecast_element), {
+        return merge_dicts({
             # extra
-            'tempC': round_to_str(temp),
-            'tempF': round_to_str(celsius_to_fahrenheit(temp)),
             'time': unix_timestamp_to_world_weather_hourly_time(forecast_element['dt']),
-            'HeatIndexC': round_to_str(heat_index_celsius(temp, relative_humidity)),
-            'HeatIndexF': round_to_str(heat_index_fahrenheit(temp_f, relative_humidity)),
-            'DewPointC': round_to_str(dew_point),
-            'DewPointF': round_to_str(celsius_to_fahrenheit(dew_point)),
-            'WindChillC': round_to_str(windchill),
-            'WindChillF': round_to_str(celsius_to_fahrenheit(windchill))
-        })
+            'tempC': round_to_str(temp),
+            'tempF': round_to_str(celsius_to_fahrenheit(temp))
+#            'HeatIndexC': round_to_str(heat_index_celsius(temp, relative_humidity)),
+#            'HeatIndexF': round_to_str(heat_index_fahrenheit(temp_f, relative_humidity)),
+#            'DewPointC': round_to_str(dew_point),
+#            'DewPointF': round_to_str(celsius_to_fahrenheit(dew_point)),
+#            'WindChillC': round_to_str(windchill),
+#            'WindChillF': round_to_str(celsius_to_fahrenheit(windchill))
+        }, self.forecast_base_elements(forecast_element))

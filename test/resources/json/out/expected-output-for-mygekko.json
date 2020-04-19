@@ -1,0 +1,126 @@
+{
+  "data": {
+    "current_condition": [
+      {
+        "observation_time": "01:15 AM",
+        "temp_C": "9",
+        "weatherCode": "113",
+        "weatherIconUrl": [
+          {
+            "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png"
+          }
+        ],
+        "weatherDesc": [
+          {
+            "value": "Sonnig/Klar"
+          }
+        ],
+        "windspeedKmph": "6",
+        "winddirDegree": "110",
+        "winddir16Point": "ESE",
+        "precipMM": "0.3",
+        "humidity": "62",
+        "visibility": "10",
+        "pressure": "1026",
+        "cloudcover": "4"
+      }
+    ],
+    "weather": [
+      {
+        "date": "2020-04-08",
+        "weatherCode": "116",
+        "weatherIconUrl": [
+          {
+            "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+          }
+        ],
+        "weatherDesc": [
+          {
+            "value": "Leicht bewoelkt"
+          }
+        ],
+        "tempMaxC": "21",
+        "tempMinC": "7",
+        "precipMM": "11.5",
+        "windspeedKmph": "5.4",
+        "totalSnow_cm": "0.0"
+      },
+      {
+        "date": "2020-04-09",
+        "weatherCode": "116",
+        "weatherIconUrl": [
+          {
+            "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+          }
+        ],
+        "weatherDesc": [
+          {
+            "value": "Leicht bewoelkt"
+          }
+        ],
+        "tempMaxC": "20",
+        "tempMinC": "6",
+        "precipMM": "0.0",
+        "windspeedKmph": "12.6",
+        "totalSnow_cm": "0.0"
+      },
+      {
+        "date": "2020-04-10",
+        "weatherCode": "116",
+        "weatherIconUrl": [
+          {
+            "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+          }
+        ],
+        "weatherDesc": [
+          {
+            "value": "Leicht bewoelkt"
+          }
+        ],
+        "tempMaxC": "20",
+        "tempMinC": "6",
+        "precipMM": "0.0",
+        "windspeedKmph": "10.8",
+        "totalSnow_cm": "0.0"
+      },
+      {
+        "date": "2020-04-11",
+        "weatherCode": "116",
+        "weatherIconUrl": [
+          {
+            "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+          }
+        ],
+        "weatherDesc": [
+          {
+            "value": "Leicht bewoelkt"
+          }
+        ],
+        "tempMaxC": "22",
+        "tempMinC": "7",
+        "precipMM": "0.1",
+        "windspeedKmph": "5.0",
+        "totalSnow_cm": "0.0"
+      },
+      {
+        "date": "2020-04-12",
+        "weatherCode": "116",
+        "weatherIconUrl": [
+          {
+            "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+          }
+        ],
+        "weatherDesc": [
+          {
+            "value": "Leicht bewoelkt"
+          }
+        ],
+        "tempMaxC": "20",
+        "tempMinC": "7",
+        "precipMM": "0.1",
+        "windspeedKmph": "11.9",
+        "totalSnow_cm": "0.0"
+      }
+    ]
+  }
+}
