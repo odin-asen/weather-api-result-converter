@@ -19,7 +19,8 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
         last_updated = datetime.datetime.fromtimestamp(current['last_updated_epoch'])
         corresponding_code = current['condition']['code']
         weather_code = self.world_weather_code_by_corresponding_code(corresponding_code)
-        weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
+        is_day = current['is_day'] != 0
+        weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code, is_day)
         weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
         mapped = {
             'data': {

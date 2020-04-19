@@ -56,10 +56,14 @@ class BaseForecastMapper:
             )
         raise ValueError(error_message)
 
-    def make_icon_url_by_corresponding_code(self, corresponding_code):
+    def make_icon_url_by_corresponding_code(self, corresponding_code, is_day=True):
+        day_symbol = 'day'
+        if not is_day:
+            day_symbol = 'night'
+
         mapping = self.get_mapping_by_corresponding_code(corresponding_code)
         return 'http://cdn.worldweatheronline.net/images/wsymbols01_png_64/{symbol}.png'\
-            .format(symbol=mapping['symbol']['day'])
+            .format(symbol=mapping['symbol'][day_symbol])
 
     def get_condition_by_corresponding_code(self, corresponding_code):
         mapping = self.get_mapping_by_corresponding_code(corresponding_code)
