@@ -1,0 +1,7 @@
+{
+    "language_code": "de",
+    "keys": {
+      "weather_api":"<enter-your-api-key>",
+      "openweathermap":"<enter-your-api-key>"
+    }
+}

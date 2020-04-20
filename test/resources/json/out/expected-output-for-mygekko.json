@@ -12,12 +12,12 @@
         ],
         "weatherDesc": [
           {
-            "value": "Sonnig/Klar"
+            "value": "Clear/Sunny"
           }
         ],
         "windspeedKmph": "6",
         "winddirDegree": "110",
-        "winddir16Point": "ESE",
+        "winddir16Point": "East-SE",
         "precipMM": "0.3",
         "humidity": "62",
         "visibility": "10",
@@ -27,7 +27,7 @@
     ],
     "weather": [
       {
-        "date": "2020-04-08",
+        "date": "April 08",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -36,17 +36,23 @@
         ],
         "weatherDesc": [
           {
-            "value": "Leicht bewoelkt"
+            "value": "Partly Cloudy"
           }
         ],
         "tempMaxC": "21",
         "tempMinC": "7",
         "precipMM": "11.5",
         "windspeedKmph": "5.4",
-        "totalSnow_cm": "0.0"
+        "totalSnow_cm": "0.0",
+        "hourly": [
+          {
+            "time": "0",
+            "winddir16Point": "East-SE"
+          }
+        ]
       },
       {
-        "date": "2020-04-09",
+        "date": "April 09",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -55,17 +61,23 @@
         ],
         "weatherDesc": [
           {
-            "value": "Leicht bewoelkt"
+            "value": "Partly Cloudy"
           }
         ],
         "tempMaxC": "20",
         "tempMinC": "6",
         "precipMM": "0.0",
         "windspeedKmph": "12.6",
-        "totalSnow_cm": "0.0"
+        "totalSnow_cm": "0.0",
+        "hourly": [
+          {
+            "time": "0",
+            "winddir16Point": "East-SE"
+          }
+        ]
       },
       {
-        "date": "2020-04-10",
+        "date": "April 10",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -74,17 +86,23 @@
         ],
         "weatherDesc": [
           {
-            "value": "Leicht bewoelkt"
+            "value": "Partly Cloudy"
           }
         ],
         "tempMaxC": "20",
         "tempMinC": "6",
         "precipMM": "0.0",
         "windspeedKmph": "10.8",
-        "totalSnow_cm": "0.0"
+        "totalSnow_cm": "0.0",
+        "hourly": [
+          {
+            "time": "0",
+            "winddir16Point": "East-SE"
+          }
+        ]
       },
       {
-        "date": "2020-04-11",
+        "date": "April 11",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -93,17 +111,23 @@
         ],
         "weatherDesc": [
           {
-            "value": "Leicht bewoelkt"
+            "value": "Partly Cloudy"
           }
         ],
         "tempMaxC": "22",
         "tempMinC": "7",
         "precipMM": "0.1",
         "windspeedKmph": "5.0",
-        "totalSnow_cm": "0.0"
+        "totalSnow_cm": "0.0",
+        "hourly": [
+          {
+            "time": "0",
+            "winddir16Point": "East-SE"
+          }
+        ]
       },
       {
-        "date": "2020-04-12",
+        "date": "April 12",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -112,14 +136,20 @@
         ],
         "weatherDesc": [
           {
-            "value": "Leicht bewoelkt"
+            "value": "Partly Cloudy"
           }
         ],
         "tempMaxC": "20",
         "tempMinC": "7",
         "precipMM": "0.1",
         "windspeedKmph": "11.9",
-        "totalSnow_cm": "0.0"
+        "totalSnow_cm": "0.0",
+        "hourly": [
+          {
+            "time": "0",
+            "winddir16Point": "East-SE"
+          }
+        ]
       }
     ]
   }

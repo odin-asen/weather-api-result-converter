@@ -31,3 +31,30 @@ class TestWeatherAPIForecastMapper(TestCase):
         mapped_dict = mapper.to_output_dictionary()
 
         self.assertEqual(expected_output_dict, mapped_dict)
+
+    def test_GIVEN_translation_to_de_WHEN_to_output_dictionary_THEN_decode_umlaut_as_expected(self):
+        test_json = read_input_test_json()
+
+        mapper = WeatherAPIForecastMapper(test_json)
+        mapper.language_code = 'de'
+        mapped_dict = mapper.to_output_dictionary()
+
+        self.assertEqual('Leicht bewölkt', mapped_dict['data']['weather'][0]['weatherDesc'][0]['value'])
+
+    def test_GIVEN_translation_to_de_WHEN_to_output_dictionary_THEN_print_date_in_German(self):
+        test_json = read_input_test_json()
+
+        mapper = WeatherAPIForecastMapper(test_json)
+        mapper.language_code = 'de'
+        mapped_dict = mapper.to_output_dictionary()
+
+        self.assertEqual('08. April', mapped_dict['data']['weather'][0]['date'])
+
+    def test_GIVEN_translation_to_en_WHEN_to_output_dictionary_THEN_print_date_in_German(self):
+        test_json = read_input_test_json()
+
+        mapper = WeatherAPIForecastMapper(test_json)
+        mapper.language_code = 'en'
+        mapped_dict = mapper.to_output_dictionary()
+
+        self.assertEqual('April 08', mapped_dict['data']['weather'][0]['date'])
