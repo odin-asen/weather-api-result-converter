@@ -18,7 +18,7 @@ def main():
     api_forecast = weather_api_forecast.WeatherAPIForecast(query_parser, USE_STATIC_FILE)
     result = api_forecast.fetch_and_map_response_as_string()
     trace_file_path = '../forecast-mapped-{api_name}.json'\
-        .format(api_name=api_forecast.get_api_name())
+        .format(api_name=api_forecast.get_api_name)
     with open(trace_file_path, 'w') as forecast_file:
         forecast_file.write(result)
     print(api_forecast.make_content_type())

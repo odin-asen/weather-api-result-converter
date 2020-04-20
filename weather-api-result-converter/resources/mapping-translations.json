@@ -1,4 +1,10 @@
 {
+  "date_format": {
+    "day": {
+      "en": "%B %d",
+      "de": "%d. %B"
+    }
+  },
   "wind_dir": {
     "N": {
       "en": "North",

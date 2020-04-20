@@ -1,3 +1,4 @@
+import locale
 import datetime
 import json
 import os
@@ -89,3 +90,8 @@ class BaseForecastMapper:
     def get_condition_by_corresponding_code(self, corresponding_code):
         mapping = self.get_mapping_by_corresponding_code(corresponding_code)
         return mapping['description'][self.language_code]
+
+    def format_daily_date_by_locale_pattern(self, iso_time_str: str) -> str:
+        locale.setlocale(locale.LC_TIME, self.language_code)
+        date_pattern = self.mapping_translations['date_format']['day'][self.language_code]
+        return datetime.datetime.fromisoformat(iso_time_str).strftime(date_pattern)

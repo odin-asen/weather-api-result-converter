@@ -26,5 +26,6 @@ class WeatherAPIForecast(BaseAPIForecast):
     def create_mapper(self, json_string) -> BaseForecastMapper:
         return WeatherAPIForecastMapper(json_string)
 
+    @property
     def get_api_name(self) -> str:
         return 'weather_api'

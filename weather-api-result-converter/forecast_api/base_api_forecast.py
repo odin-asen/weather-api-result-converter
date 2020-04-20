@@ -59,9 +59,9 @@ class BaseAPIForecast:
     def create_mapper(self, json_string: str) -> BaseForecastMapper:
         pass
 
-    @abstractmethod
+    @property
     def get_api_name(self) -> str:
-        pass
+        return "base_api"
 
     @abstractmethod
     def make_forecast_url(self):

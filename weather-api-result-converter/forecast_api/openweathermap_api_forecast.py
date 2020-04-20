@@ -28,6 +28,6 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
     def create_mapper(self, json_string) -> BaseForecastMapper:
         return OpenweathermapAPIForecastMapper(json_string)
 
-    # noinspection Pylint
+    @property
     def get_api_name(self) -> str:
         return 'openweathermap'

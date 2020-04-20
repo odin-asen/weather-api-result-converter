@@ -27,7 +27,7 @@
     ],
     "weather": [
       {
-        "date": "2020-04-08",
+        "date": "April 08",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -52,7 +52,7 @@
         ]
       },
       {
-        "date": "2020-04-09",
+        "date": "April 09",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -77,7 +77,7 @@
         ]
       },
       {
-        "date": "2020-04-10",
+        "date": "April 10",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -102,7 +102,7 @@
         ]
       },
       {
-        "date": "2020-04-11",
+        "date": "April 11",
         "weatherCode": "116",
         "weatherIconUrl": [
           {
@@ -127,7 +127,7 @@
         ]
       },
       {
-        "date": "2020-04-12",
+        "date": "April 12",
         "weatherCode": "116",
         "weatherIconUrl": [
           {

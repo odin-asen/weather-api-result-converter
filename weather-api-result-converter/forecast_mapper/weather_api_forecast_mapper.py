@@ -64,7 +64,7 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
         weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
         weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
         return {
-            'date': forecast_day['date'],
+            'date': self.format_daily_date_by_locale_pattern(forecast_day['date']),
             'weatherCode': weather_code,
             'weatherIconUrl': [{'value': weather_icon}],
             'weatherDesc': [{'value': weather_condition}],
