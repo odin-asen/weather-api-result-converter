@@ -3,7 +3,7 @@
     "code": 113,
     "description": {
       "en": "Clear/Sunny",
-      "de": "Sonnig/Klar"
+      "de": "Klar"
     },
     "symbol": {
       "day": "wsymbol_0001_sunny",
@@ -98,7 +98,7 @@
     "code": 176,
     "description": {
       "en": "Patchy rain nearby",
-      "de": "Stellenweise Regenfall"
+      "de": "Stellenweise Regen"
     },
     "symbol": {
       "day": "wsymbol_0009_light_rain_showers",
@@ -114,7 +114,7 @@
     "code": 179,
     "description": {
       "en": "Patchy snow nearby",
-      "de": "Stellenweise Schneefall"
+      "de": "Stellenw. Schneefall"
     },
     "symbol": {
       "day": "wsymbol_0013_sleet_showers",
@@ -149,7 +149,7 @@
     "code": 185,
     "description": {
       "en": "Patchy freezing drizzle nearby",
-      "de": "Stellenweise gefrierender Nieselregen"
+      "de": "Gefrierender Niesel"
     },
     "symbol": {
       "day": "wsymbol_0021_cloudy_with_sleet",
@@ -165,7 +165,7 @@
     "code": 200,
     "description": {
       "en": "Thundery outbreaks in nearby",
-      "de": "Gewittrige Niederschläge"
+      "de": "Gewitter/Niederschlag"
     },
     "symbol": {
       "day": "wsymbol_0016_thundery_showers",
@@ -251,7 +251,7 @@
     "code": 263,
     "description": {
       "en": "Patchy light drizzle",
-      "de": "Stellenweise Nieselregen"
+      "de": "Stellenweise Niesel"
     },
     "symbol": {
       "day": "wsymbol_0009_light_rain_showers",
@@ -289,7 +289,7 @@
     "code": 281,
     "description": {
       "en": "Freezing drizzle",
-      "de": "gefrierender Nieselregen"
+      "de": "Gefrierender Niesel"
     },
     "symbol": {
       "day": "wsymbol_0021_cloudy_with_sleet",
@@ -321,7 +321,7 @@
     "code": 293,
     "description": {
       "en": "Patchy light rain",
-      "de": "Stellenweise leichter Regenfall"
+      "de": "Leichter Regen"
     },
     "symbol": {
       "day": "wsymbol_0017_cloudy_with_light_rain",
@@ -337,7 +337,7 @@
     "code": 296,
     "description": {
       "en": "Light rain",
-      "de": "Leichter Regenfall"
+      "de": "Leichter Regen"
     },
     "symbol": {
       "day": "wsymbol_0017_cloudy_with_light_rain",
@@ -356,7 +356,7 @@
     "code": 299,
     "description": {
       "en": "Moderate rain at times",
-      "de": "Zuweilen mäßiger Regenfall"
+      "de": "Zeitw. mäßiger Regen"
     },
     "symbol": {
       "day": "wsymbol_0010_heavy_rain_showers",
@@ -375,7 +375,7 @@
     "code": 302,
     "description": {
       "en": "Moderate rain",
-      "de": "Mäßiger Regenfall"
+      "de": "Mäßiger Regen"
     },
     "symbol": {
       "day": "wsymbol_0018_cloudy_with_heavy_rain",
@@ -394,7 +394,7 @@
     "code": 305,
     "description": {
       "en": "Heavy rain at times",
-      "de": "Zeitweise starker Regenfall"
+      "de": "Zeitw. starker Regen"
     },
     "symbol": {
       "day": "wsymbol_0010_heavy_rain_showers",
@@ -413,7 +413,7 @@
     "code": 308,
     "description": {
       "en": "Heavy rain",
-      "de": "Starker Regenfall"
+      "de": "Starker Regen"
     },
     "symbol": {
       "day": "wsymbol_0018_cloudy_with_heavy_rain",
@@ -448,7 +448,7 @@
     "code": 314,
     "description": {
       "en": "Moderate or Heavy freezing rain",
-      "de": "Mäßiger bis starker Eisregen"
+      "de": "Mäßig/Starker Eisregen"
     },
     "symbol": {
       "day": "wsymbol_0021_cloudy_with_sleet",
@@ -486,7 +486,7 @@
     "code": 320,
     "description": {
       "en": "Moderate or heavy sleet",
-      "de": "Mäßiger bis starker Schneeregen"
+      "de": "Mäßig/Starker Schneeregen"
     },
     "symbol": {
       "day": "wsymbol_0019_cloudy_with_light_snow",
@@ -505,7 +505,7 @@
     "code": 323,
     "description": {
       "en": "Patchy light snow",
-      "de": "Stellenweise leichter Schneefall"
+      "de": "Leichter Schneefall"
     },
     "symbol": {
       "day": "wsymbol_0011_light_snow_showers",
@@ -540,7 +540,7 @@
     "code": 329,
     "description": {
       "en": "Patchy moderate snow",
-      "de": "Stellenweise mäßiger Schneefall"
+      "de": "Mäßiger Schneefall"
     },
     "symbol": {
       "day": "wsymbol_0020_cloudy_with_heavy_snow",
@@ -578,7 +578,7 @@
     "code": 335,
     "description": {
       "en": "Patchy heavy snow",
-      "de": "Stellenweise starker Schneefall"
+      "de": "Starker Schneefall"
     },
     "symbol": {
       "day": "wsymbol_0012_heavy_snow_showers",
@@ -648,7 +648,7 @@
     "code": 356,
     "description": {
       "en": "Moderate or heavy rain shower",
-      "de": "Mäßige bis starke Regenschauer"
+      "de": "Mäßige/Starke Schauer"
     },
     "symbol": {
       "day": "wsymbol_0010_heavy_rain_showers",
@@ -667,7 +667,7 @@
     "code": 359,
     "description": {
       "en": "Torrential rain shower",
-      "de": "Sturbachartiger Regenguss"
+      "de": "Sturbachregen"
     },
     "symbol": {
       "day": "wsymbol_0018_cloudy_with_heavy_rain",
@@ -686,7 +686,7 @@
     "code": 362,
     "description": {
       "en": "Light sleet showers",
-      "de": "Leichter Schneeregenschauer"
+      "de": "Leichter Schauer"
     },
     "symbol": {
       "day": "wsymbol_0013_sleet_showers",
@@ -705,7 +705,7 @@
     "code": 365,
     "description": {
       "en": "Moderate or heavy sleet showers",
-      "de": "Mäßige bis starke Schneeregenschauer"
+      "de": "Mäßige/Starke Schauer"
     },
     "symbol": {
       "day": "wsymbol_0013_sleet_showers",
@@ -743,7 +743,7 @@
     "code": 371,
     "description": {
       "en": "Moderate or heavy snow showers",
-      "de": "Mäßiger bis starker Schneeschauer"
+      "de": "Mäßig/Starker Schauer"
     },
     "symbol": {
       "day": "wsymbol_0012_heavy_snow_showers",
@@ -762,7 +762,7 @@
     "code": 374,
     "description": {
       "en": "Light showers of ice pellets",
-      "de": "Leichter Graupelschauer"
+      "de": "Leichter Schauer"
     },
     "symbol": {
       "day": "wsymbol_0013_sleet_showers",
@@ -778,7 +778,7 @@
     "code": 377,
     "description": {
       "en": "Moderate or heavy showers of ice pellets",
-      "de": "Mäßiger bis starker Graupelschauer"
+      "de": "Mäßig/Starker Schauer"
     },
     "symbol": {
       "day": "wsymbol_0021_cloudy_with_sleet",
@@ -794,7 +794,7 @@
     "code": 386,
     "description": {
       "en": "Patchy light rain in area with thunder",
-      "de": "Stellenweise leichter Gewitterregen"
+      "de": "Leichtes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0016_thundery_showers",
@@ -813,7 +813,7 @@
     "code": 389,
     "description": {
       "en": "Moderate or heavy rain in area with thunder",
-      "de": "Mäßiger bis starker Gewitterregen"
+      "de": "Mäßig/Starkes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0024_thunderstorms",
@@ -832,7 +832,7 @@
     "code": 392,
     "description": {
       "en": "Patchy light snow in area with thunder",
-      "de": "Mäßiger bis starker Gewitterregen"
+      "de": "Mäßig/Starkes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0016_thundery_showers",
@@ -848,7 +848,7 @@
     "code": 395,
     "description": {
       "en": "Moderate or heavy snow in area with thunder",
-      "de": "Mäßiger bis starker Gewitterschneefall"
+      "de": "Mäßig/Starkes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0012_heavy_snow_showers",
@@ -863,8 +863,8 @@
   {
     "code": 9999,
     "description": {
-      "en": "unknown in WorldWeatherOnline",
-      "de": "unbekannt in WorldWeatherOnline"
+      "en": "unknown",
+      "de": "unbekannt"
     },
     "symbol": {
       "day": "",
