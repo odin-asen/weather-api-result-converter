@@ -27,22 +27,26 @@ def make_resources_path():
     return os.path.join(dirname, mapping_file_path)
 
 
+
+DEFAULT_CONFIG = {
+    'language_code': 'en',
+    'locale': 'en_GB.UTF-8'
+}
+
+
 def load_mapping_config_or_default():
     if os.path.isfile('../config.json'):
         with open('../config.json', 'r') as config_json:
             return json.loads(config_json.read())
     else:
-        return {
-            'language_code': 'en'
-        }
-
+        return DEFAULT_CONFIG
 
 class BaseForecastMapper:
     def __init__(self, json_string):
         self.forecast_input_dictionary = json.loads(json_string)
         mapping_config = load_mapping_config_or_default()
-        self.language_code = mapping_config['language_code']
-
+        self.language_code = mapping_config.get('language_code', DEFAULT_CONFIG['language_code'])
+        self.locale = mapping_config.get('locale', DEFAULT_CONFIG['locale'])
         self.corresponding_code_key = ''
         with open(make_resources_path() + 'condition-map.json', 'r', encoding='utf-8') \
                 as conditions_map_json_file:
@@ -92,6 +96,6 @@ class BaseForecastMapper:
         return mapping['description'][self.language_code]
 
     def format_daily_date_by_locale_pattern(self, iso_time_str: str) -> str:
-        locale.setlocale(locale.LC_TIME, self.language_code)
+        locale.setlocale(locale.LC_TIME, self.locale)
         date_pattern = self.mapping_translations['date_format']['day'][self.language_code]
         return datetime.datetime.fromisoformat(iso_time_str).strftime(date_pattern)

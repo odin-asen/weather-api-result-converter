@@ -75,5 +75,5 @@ class WeatherAPIForecastMapper(BaseForecastMapper):
             # not available in Weather-API, but maybe needed by MyGekko
             'totalSnow_cm': "0.0",
             # not provided with free api key
-            'hourly': [{'time': '0', 'winddir16Point': wind_dir}],
+            'hourly': [{'time': '0', 'winddir16Point': wind_dir}]
         }

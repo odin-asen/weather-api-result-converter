@@ -22,7 +22,7 @@
     "code": 116,
     "description": {
       "en": "Partly Cloudy",
-      "de": "Leicht bewölkt"
+      "de": "Leicht bewolkt"
     },
     "symbol": {
       "day": "wsymbol_0002_sunny_intervals",
@@ -41,7 +41,7 @@
     "code": 119,
     "description": {
       "en": "Cloudy",
-      "de": "Bewölkt"
+      "de": "Bewlokt"
     },
     "symbol": {
       "day": "wsymbol_0003_white_cloud",
@@ -356,7 +356,7 @@
     "code": 299,
     "description": {
       "en": "Moderate rain at times",
-      "de": "Zeitw. mäßiger Regen"
+      "de": "Zeitw. massiger Regen"
     },
     "symbol": {
       "day": "wsymbol_0010_heavy_rain_showers",
@@ -375,7 +375,7 @@
     "code": 302,
     "description": {
       "en": "Moderate rain",
-      "de": "Mäßiger Regen"
+      "de": "Massiger Regen"
     },
     "symbol": {
       "day": "wsymbol_0018_cloudy_with_heavy_rain",
@@ -448,7 +448,7 @@
     "code": 314,
     "description": {
       "en": "Moderate or Heavy freezing rain",
-      "de": "Mäßig/Starker Eisregen"
+      "de": "Massig/Starker Eisregen"
     },
     "symbol": {
       "day": "wsymbol_0021_cloudy_with_sleet",
@@ -486,7 +486,7 @@
     "code": 320,
     "description": {
       "en": "Moderate or heavy sleet",
-      "de": "Mäßig/Starker Schneeregen"
+      "de": "Massig/Starker Schneeregen"
     },
     "symbol": {
       "day": "wsymbol_0019_cloudy_with_light_snow",
@@ -540,7 +540,7 @@
     "code": 329,
     "description": {
       "en": "Patchy moderate snow",
-      "de": "Mäßiger Schneefall"
+      "de": "Massiger Schneefall"
     },
     "symbol": {
       "day": "wsymbol_0020_cloudy_with_heavy_snow",
@@ -559,7 +559,7 @@
     "code": 332,
     "description": {
       "en": "Moderate snow",
-      "de": "Mäßiger Schneefall"
+      "de": "Massiger Schneefall"
     },
     "symbol": {
       "day": "wsymbol_0020_cloudy_with_heavy_snow",
@@ -648,7 +648,7 @@
     "code": 356,
     "description": {
       "en": "Moderate or heavy rain shower",
-      "de": "Mäßige/Starke Schauer"
+      "de": "Massige/Starke Schauer"
     },
     "symbol": {
       "day": "wsymbol_0010_heavy_rain_showers",
@@ -705,7 +705,7 @@
     "code": 365,
     "description": {
       "en": "Moderate or heavy sleet showers",
-      "de": "Mäßige/Starke Schauer"
+      "de": "Massige/Starke Schauer"
     },
     "symbol": {
       "day": "wsymbol_0013_sleet_showers",
@@ -743,7 +743,7 @@
     "code": 371,
     "description": {
       "en": "Moderate or heavy snow showers",
-      "de": "Mäßig/Starker Schauer"
+      "de": "Massig/Starker Schauer"
     },
     "symbol": {
       "day": "wsymbol_0012_heavy_snow_showers",
@@ -778,7 +778,7 @@
     "code": 377,
     "description": {
       "en": "Moderate or heavy showers of ice pellets",
-      "de": "Mäßig/Starker Schauer"
+      "de": "Massig/Starker Schauer"
     },
     "symbol": {
       "day": "wsymbol_0021_cloudy_with_sleet",
@@ -813,7 +813,7 @@
     "code": 389,
     "description": {
       "en": "Moderate or heavy rain in area with thunder",
-      "de": "Mäßig/Starkes Gewitter"
+      "de": "Massig/Starkes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0024_thunderstorms",
@@ -832,7 +832,7 @@
     "code": 392,
     "description": {
       "en": "Patchy light snow in area with thunder",
-      "de": "Mäßig/Starkes Gewitter"
+      "de": "Massig/Starkes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0016_thundery_showers",
@@ -848,7 +848,7 @@
     "code": 395,
     "description": {
       "en": "Moderate or heavy snow in area with thunder",
-      "de": "Mäßig/Starkes Gewitter"
+      "de": "Massig/Starkes Gewitter"
     },
     "symbol": {
       "day": "wsymbol_0012_heavy_snow_showers",

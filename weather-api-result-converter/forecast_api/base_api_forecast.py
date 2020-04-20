@@ -27,7 +27,7 @@ class BaseAPIForecast:
 
         file_format = self.query_string_parser.retrieve_file_format()
         if file_format == 'json':
-            return json.dumps(mapped_dictionary, indent=4, ensure_ascii=False)
+            return json.dumps(mapped_dictionary, indent=4)
 
         if file_format == 'xml':
             xml_bytes = dicttoxml.dicttoxml(mapped_dictionary, root=False)
@@ -52,7 +52,7 @@ class BaseAPIForecast:
             return json_file.read()
 
     def make_content_type(self) -> str:
-        return 'Content-type: application/{file_format}; charset=utf-8'\
+        return 'Content-type: application/{file_format}; charset=utf-8\n'\
             .format(file_format=self.query_string_parser.retrieve_file_format())
 
     @abstractmethod

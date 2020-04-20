@@ -1,4 +1,3 @@
-import cgitb
 import cgi_parameters
 from forecast_api import openweathermap_api_forecast, weather_api_forecast
 from request_query_string_parser import create_parser_with_default_values, RequestQueryStringParser
@@ -17,14 +16,11 @@ def main():
 #        .OpenweathermapAPIForecast(query_parser, USE_STATIC_FILE)
     api_forecast = weather_api_forecast.WeatherAPIForecast(query_parser, USE_STATIC_FILE)
     result = api_forecast.fetch_and_map_response_as_string()
-    trace_file_path = '../forecast-mapped-{api_name}.json'\
-        .format(api_name=api_forecast.get_api_name)
-    with open(trace_file_path, 'w') as forecast_file:
-        forecast_file.write(result)
     print(api_forecast.make_content_type())
     print(result)
 
 
 # Start application
-cgitb.enable(logdir="/var/log/json-result-converter/")
+#import cgitb
+#cgitb.enable(logdir="/var/log/weather-api-result-converter/")
 main()
