@@ -8,14 +8,14 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
     def __init__(self, query_string_parser: RequestQueryStringParser, use_static_file=False):
         super().__init__(query_string_parser)
         self.use_static_file = use_static_file
-        self.static_file_path = 'openweathermap/forecast-beuren.json'
+        self.static_file_path = '../resources/openweathermap/onecall-beuren.json'
         if not use_static_file:
             if not query_string_parser.has_search_query():
                 raise ValueError('Query string contains insufficient set of values. '
                                  'OpenweathermapAPIForecast requires search query')
 
     def make_forecast_url(self):
-        url_base = 'http://api.openweathermap.org/data/2.5/forecast'
+        url_base = 'http://api.openweathermap.org/data/2.5/onecall'
         lat_lon = self.query_string_parser.retrieve_search_query().split(',', 2)
         print(lat_lon)
         return url_base + '?appid={api_key}&lat={lat}&lon={lon}&mode=json&units=metric'.format(

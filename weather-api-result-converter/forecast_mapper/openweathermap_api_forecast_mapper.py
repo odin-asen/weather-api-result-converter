@@ -1,14 +1,8 @@
-import datetime
-from statistics import mean
-
 from forecast_mapper.base_forecast_mapper import \
     BaseForecastMapper, \
     round_to_str, \
-    unix_timestamp_to_world_weather_day_time, \
-    unix_timestamp_to_world_weather_hourly_time
-from forecast_mapper.weather_stats import celsius_to_fahrenheit, kph_to_miles, mm_to_inch, h_pa_to_inches, \
-    degree_to_wind_rose_str, heat_index_celsius, heat_index_fahrenheit, dew_point_celsius, \
-    windchill_celsius
+    unix_timestamp_to_world_weather_day_time
+from forecast_mapper.weather_stats import degree_to_wind_rose_str
 
 
 def forecast_main(dictionary: dict, key: str):
@@ -60,9 +54,8 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
 
     def to_output_dictionary(self):
         source_dict = self.forecast_input_dictionary
-        current = source_dict['list'][0]
-        current_timestamp = datetime.datetime.now().timestamp()
-        temp_c = forecast_main(current, 'temp')
+        current = source_dict['current']
+        temp_c = current['temp']
 
         return {
             'data': {
@@ -72,127 +65,72 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                     merge_dicts({
                         # extra
                         'observation_time':
-                            unix_timestamp_to_world_weather_day_time(current_timestamp),
+                            unix_timestamp_to_world_weather_day_time(current['dt']),
                         'temp_C': round_to_str(temp_c),
-                        'temp_F': round_to_str(celsius_to_fahrenheit(temp_c)),
-                        # not provided
-                        'uvIndex': 0
+                        'visibility': round_to_str(current['visibility'] / 1000)
                     }, self.forecast_base_elements(current))
                 ],
-                'weather': self.to_weather_elements(),
-                'ClimateAverages': [
-                    # not provided
-                ]
+                'weather': self.to_weather_elements()
             }
         }
 
     def forecast_base_elements(self, forecast_element: dict):
         corresponding_code = forecast_element['weather'][0]['id']
+        wind_direction = forecast_element['wind_deg']
+        translated_wind_rose = self.translate_16_points_wind_direction(
+            degree_to_wind_rose_str(wind_direction))
+        return merge_dicts(self.parse_weather_by_corresponding_code(corresponding_code), {
+            'windspeedKmph': round_to_str(forecast_element['wind_speed']),
+            'winddirDegree': round_to_str(wind_direction),
+            'winddir16Point': translated_wind_rose,
+            'precipMM': self.parse_precipitation(forecast_element),
+            'humidity': round_to_str(forecast_element['humidity']),
+            'pressure': round_to_str(forecast_element['pressure']),
+            'cloudcover': round_to_str(forecast_element['clouds'])
+        })
+
+    def parse_weather_by_corresponding_code(self, corresponding_code) -> dict:
         weather_code = self.world_weather_code_by_corresponding_code(corresponding_code)
         weather_icon = self.make_icon_url_by_corresponding_code(corresponding_code)
         weather_condition = self.get_condition_by_corresponding_code(corresponding_code)
-        wind_speed = forecast_element['wind']['speed']
-        wind_direction = forecast_element['wind']['deg']
-        if 'rain' in forecast_element:
-            precipitation_mm = forecast_element['rain']['3h']
-        else:
-            precipitation_mm = 0.0
-        pressure_h_pa = forecast_main(forecast_element, 'grnd_level')
-        temp_feelslike = forecast_main(forecast_element, 'feels_like')
-
         return {
             'weatherCode': str(weather_code),
             'weatherIconUrl': [{'value': weather_icon}],
-            'weatherDesc': [{'value': weather_condition}],
-
-            'windspeedMiles': round_to_str(kph_to_miles(wind_speed)),
-            'windspeedKmph': round_to_str(wind_speed),
-            'winddirDegree': round_to_str(wind_direction),
-            'winddir16Point': degree_to_wind_rose_str(wind_direction),
-
-            'precipMM': round_to_str(precipitation_mm),
-            'precipInches': round_to_str(mm_to_inch(precipitation_mm)),
-            'humidity': round_to_str(forecast_main(forecast_element, 'humidity')),
-
-            # not provided
-            'visibility': 'not provided',
-            # not provided
-            'visibilityMiles': 'not provided',
-
-            'pressure': round_to_str(pressure_h_pa),
-            'pressureInches': round_to_str(h_pa_to_inches(pressure_h_pa)),
-            'cloudcover': round_to_str(forecast_element['clouds']['all']),
-            'FeelsLikeC': round_to_str(temp_feelslike),
-            'FeelsLikeF': round_to_str(celsius_to_fahrenheit(temp_feelslike)),
+            'weatherDesc': [{'value': weather_condition}]
         }
+
+    @staticmethod
+    def parse_precipitation(forecast_element):
+        if 'rain' in forecast_element:
+            precipitation = forecast_element['rain']
+        else:
+            precipitation = 0.0
+        return str(precipitation)
 
     def to_weather_elements(self):
         source_dict = self.forecast_input_dictionary
-        sunrise = source_dict['city']['sunrise']
-        sunset = source_dict['city']['sunset']
+        days = source_dict['daily']
         weather_elements = []
-        # Group by day -> weather_element -> calc min, max, avg, cloudcover
-        grouped_by_iso_day = {}
-        for element in sorted(source_dict['list'], key=lambda el: el['dt']):
-            group = datetime.datetime.fromtimestamp(element['dt']).__format__("%Y-%m-%d")
-            grouped_by_iso_day.setdefault(group, []).append(element)
-
-        # Build weather_element per day. hourly are the sub elements
-        for iso_day, day_forecast_list in grouped_by_iso_day.items():
-            day_temp_avg = mean(map(lambda el: forecast_main(el, 'temp'), day_forecast_list))
-            day_temp_max = max(map(lambda el: forecast_main(el, 'temp_max'), day_forecast_list))
-            day_temp_min = min(map(lambda el: forecast_main(el, 'temp_min'), day_forecast_list))
-
-            weather_elements.append({
-                'date': iso_day,
-                # not provided
-                #'astronomy': [
-                #    {
-                #        'sunrise': '',
-                #        'sunset': '',
-                #        'moonrise': '',
-                #        'moonset': '',
-                #        'moon_phase': '',
-                #        'moon_illumination': '',
-                #    }
-                #],
-                'maxtempC': round_to_str(day_temp_max),
-                'maxtempF': round_to_str(celsius_to_fahrenheit(day_temp_max)),
-                'mintempC': round_to_str(day_temp_min),
-                'mintempF': round_to_str(celsius_to_fahrenheit(day_temp_min)),
-                'avgtempC': round_to_str(day_temp_avg),
-                'avgtempF': round_to_str(celsius_to_fahrenheit(day_temp_avg)),
-                'totalSnow_cm': str(total_snow_in_cm(day_forecast_list)),
-                'sunHour': str(total_sunshine(day_forecast_list, sunrise, sunset)),
-                # not provided
-                'uvIndex': '0',
-                'hourly': list(map(self.forecast_element_to_hourly_element, day_forecast_list))
-            })
-
-            # update sunrise and sunset for next day
-            one_day_in_seconds = 24 * 60 * 60
-            sunrise += one_day_in_seconds
-            sunset += one_day_in_seconds
+        for day_index in range(5):
+            if len(days) > day_index:
+                weather_elements.append(self.day_to_weather_element(days[day_index]))
 
         return weather_elements
 
-    def forecast_element_to_hourly_element(self, forecast_element: dict):
-        temp = forecast_main(forecast_element, 'temp')
-        temp_f = celsius_to_fahrenheit(temp)
-        relative_humidity = forecast_main(forecast_element, 'humidity')
-        dew_point = dew_point_celsius(temp, relative_humidity)
-        wind_speed = forecast_element['wind']['speed']
-        windchill = windchill_celsius(temp, wind_speed)
-
+    def day_to_weather_element(self, forecast_day: dict):
         return merge_dicts({
-            # extra
-            'time': unix_timestamp_to_world_weather_hourly_time(forecast_element['dt']),
-            'tempC': round_to_str(temp),
-            'tempF': round_to_str(celsius_to_fahrenheit(temp))
-#            'HeatIndexC': round_to_str(heat_index_celsius(temp, relative_humidity)),
-#            'HeatIndexF': round_to_str(heat_index_fahrenheit(temp_f, relative_humidity)),
-#            'DewPointC': round_to_str(dew_point),
-#            'DewPointF': round_to_str(celsius_to_fahrenheit(dew_point)),
-#            'WindChillC': round_to_str(windchill),
-#            'WindChillF': round_to_str(celsius_to_fahrenheit(windchill))
-        }, self.forecast_base_elements(forecast_element))
+            'date': self.format_daily_date_by_locale_pattern(forecast_day['dt']),
+            'precipMM': self.parse_precipitation(forecast_day),
+            'tempMaxC': round_to_str(forecast_day['temp']['max']),
+            'tempMinC': round_to_str(forecast_day['temp']['min']),
+            'totalSnow_cm': self.parse_snow(forecast_day),
+            'windspeedKmph': str(forecast_day['wind_speed'])
+        }, self.parse_weather_by_corresponding_code(forecast_day['weather'][0]['id']))
+
+    @staticmethod
+    def parse_snow(forecast_element):
+        if 'snow' in forecast_element:
+            snow = forecast_element['snow'] / 10
+        else:
+            snow = 0.0
+        return str(snow)

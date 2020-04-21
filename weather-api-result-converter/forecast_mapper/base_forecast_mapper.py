@@ -95,7 +95,7 @@ class BaseForecastMapper:
         mapping = self.get_mapping_by_corresponding_code(corresponding_code)
         return mapping['description'][self.language_code]
 
-    def format_daily_date_by_locale_pattern(self, iso_time_str: str) -> str:
+    def format_daily_date_by_locale_pattern(self, timestamp: float) -> str:
         locale.setlocale(locale.LC_TIME, self.locale)
         date_pattern = self.mapping_translations['date_format']['day'][self.language_code]
-        return datetime.datetime.fromisoformat(iso_time_str).strftime(date_pattern)
+        return datetime.datetime.fromtimestamp(timestamp).strftime(date_pattern)
