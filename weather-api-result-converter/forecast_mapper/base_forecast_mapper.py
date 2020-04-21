@@ -1,6 +1,6 @@
-import locale
 import datetime
 import json
+import locale
 import os
 import os.path
 from abc import abstractmethod
@@ -40,6 +40,7 @@ def load_mapping_config_or_default():
             return json.loads(config_json.read())
     else:
         return DEFAULT_CONFIG
+
 
 class BaseForecastMapper:
     def __init__(self, json_string):

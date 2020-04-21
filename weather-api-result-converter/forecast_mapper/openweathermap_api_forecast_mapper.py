@@ -5,43 +5,6 @@ from forecast_mapper.base_forecast_mapper import \
 from forecast_mapper.weather_stats import degree_to_wind_rose_str
 
 
-def forecast_main(dictionary: dict, key: str):
-    return dictionary['main'][key]
-
-
-def forecast_wind(dictionary: dict, key: str):
-    return dictionary['wind'][key]
-
-
-def total_snow_in_cm(forecast_list):
-    elements_with_snow = filter(lambda el: 'snow' in el, forecast_list)
-    return sum(map(lambda el: el['snow']['3h'], elements_with_snow)) / 10.0
-
-
-def total_sunshine(forecast_list_for_one_day, sunrise: int, sunset: int):
-    hour_interval = 3.0
-    sunshine_hours = 0.0
-    for forecast in forecast_list_for_one_day:
-        time = forecast['dt']
-        cloud_influence = 100 - forecast['clouds']['all']
-        time_to_sunrise = sunrise - time
-        time_to_sunset = sunset - time
-        time_to_sunrise_in_hours = time_to_sunrise / 3600
-        time_to_sunset_in_hours = time_to_sunset / 3600
-
-        # it is full day
-        if time_to_sunrise_in_hours <= 0.0 and time_to_sunset_in_hours >= hour_interval:
-            sunshine_hours += hour_interval * cloud_influence / 100.0
-        # it is partly day in the morning
-        elif hour_interval > time_to_sunrise_in_hours > 0:
-            sunshine_hours += (hour_interval - time_to_sunrise_in_hours) * cloud_influence / 100.0
-        # it is partly day in the evening
-        elif hour_interval > time_to_sunset_in_hours > 0:
-            sunshine_hours += (hour_interval - time_to_sunset_in_hours) * cloud_influence / 100.0
-
-    return sunshine_hours
-
-
 def merge_dicts(dict1, dict2):
     return {**dict1, **dict2}
 
@@ -60,8 +23,6 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
         return {
             'data': {
                 'current_condition': [
-                    # not yet provided with current implementation
-                    # just taking the first element of list as current
                     merge_dicts({
                         # extra
                         'observation_time':
@@ -120,11 +81,11 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
     def day_to_weather_element(self, forecast_day: dict):
         return merge_dicts({
             'date': self.format_daily_date_by_locale_pattern(forecast_day['dt']),
+            'windspeedKmph': str(forecast_day['wind_speed']),
             'precipMM': self.parse_precipitation(forecast_day),
             'tempMaxC': round_to_str(forecast_day['temp']['max']),
             'tempMinC': round_to_str(forecast_day['temp']['min']),
-            'totalSnow_cm': self.parse_snow(forecast_day),
-            'windspeedKmph': str(forecast_day['wind_speed'])
+            'totalSnow_cm': self.parse_snow(forecast_day)
         }, self.parse_weather_by_corresponding_code(forecast_day['weather'][0]['id']))
 
     @staticmethod
