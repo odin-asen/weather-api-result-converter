@@ -17,7 +17,6 @@ class OpenweathermapAPIForecast(BaseAPIForecast):
     def make_forecast_url(self):
         url_base = 'http://api.openweathermap.org/data/2.5/onecall'
         lat_lon = self.query_string_parser.retrieve_search_query().split(',', 2)
-        print(lat_lon)
         return url_base + '?appid={api_key}&lat={lat}&lon={lon}&mode=json&units=metric'.format(
             api_key=read_api_key_from_config('openweathermap'),
             lat=lat_lon[0],

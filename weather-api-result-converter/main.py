@@ -12,9 +12,9 @@ def main():
         weather_api_query_string = cgi_parameters.get_cgi_url_query_string()
         query_parser = RequestQueryStringParser(weather_api_query_string)
 
-#    api_forecast = openweathermap_api_forecast\
-#        .OpenweathermapAPIForecast(query_parser, USE_STATIC_FILE)
-    api_forecast = weather_api_forecast.WeatherAPIForecast(query_parser, USE_STATIC_FILE)
+    api_forecast = openweathermap_api_forecast\
+        .OpenweathermapAPIForecast(query_parser, USE_STATIC_FILE)
+#    api_forecast = weather_api_forecast.WeatherAPIForecast(query_parser, USE_STATIC_FILE)
     result = api_forecast.fetch_and_map_response_as_string()
     print(api_forecast.make_content_type())
     print(result)

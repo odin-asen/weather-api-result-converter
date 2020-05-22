@@ -19,6 +19,9 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
         source_dict = self.forecast_input_dictionary
         current = source_dict['current']
         temp_c = current['temp']
+        visibility = '0'
+        if 'visibility' in current:
+          visibility = round_to_str(current['visibility'] / 1000)
 
         return {
             'data': {
@@ -28,7 +31,7 @@ class OpenweathermapAPIForecastMapper(BaseForecastMapper):
                         'observation_time':
                             unix_timestamp_to_world_weather_day_time(current['dt']),
                         'temp_C': round_to_str(temp_c),
-                        'visibility': round_to_str(current['visibility'] / 1000)
+                        'visibility': visibility
                     }, self.forecast_base_elements(current))
                 ],
                 'weather': self.to_weather_elements()
