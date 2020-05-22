@@ -259,7 +259,7 @@
     },
     "corresponding_codes": {
       "weatherAPI": [
-        1151
+        1150, 1151
       ],
       "openweathermap": [
         300, 310

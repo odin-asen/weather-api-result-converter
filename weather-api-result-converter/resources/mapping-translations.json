@@ -15,8 +15,8 @@
       "de": "Nord-NO"
     },
     "NE": {
-      "en": "North-East",
-      "de": "Nordost"
+      "en": "N-East",
+      "de": "N-Ost"
     },
     "ENE": {
       "en": "East-NE",
@@ -31,8 +31,8 @@
       "de": "Ost-SO"
     },
     "SE": {
-      "en": "South-East",
-      "de": "Sudost"
+      "en": "S-East",
+      "de": "S-Ost"
     },
     "SSE": {
       "en": "South-SE",
@@ -47,8 +47,8 @@
       "de": "Sud-SW"
     },
     "SW": {
-      "en": "South-West",
-      "de": "Sudwest"
+      "en": "S-West",
+      "de": "S-West"
     },
     "WSW": {
       "en": "West-SW",
@@ -63,8 +63,8 @@
       "de": "West-NW"
     },
     "NW": {
-      "en": "North-West",
-      "de": "Nordwest"
+      "en": "N-West",
+      "de": "N-West"
     },
     "NNW": {
       "en": "North-NW",
